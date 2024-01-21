@@ -1,4 +1,8 @@
 export function transformClassesToSchedule(classesData) {
+  if (!classesData) { 
+    console.log("No class data found! Exiting,")
+    return
+  }
   return classesData.reduce((acc, cls) => {
       const room = cls.location;
       if (!acc[room]) {

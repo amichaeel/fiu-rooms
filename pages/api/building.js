@@ -3,9 +3,14 @@ import dbConnect from '@/lib/dbconnect';
 
 export default async function handler(req, res) {
   try {
-    dbConnect();
+    await dbConnect();
+    const { building } = await req.query;
+    
+    if (!building) {
+      return res.status(400).json({ message: "BUilding parameter is required" });
+    }
+
     const collection = mongoose.connection.collection('fiu-classes-collection');
-    const { building } = req.query;
     const cursor = await collection.find({
       location: { $regex: building, $options: 'i' }
     }).toArray();

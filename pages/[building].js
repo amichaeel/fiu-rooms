@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import { isRoomInUse, transformClassesToSchedule } from "@/utils/scheduleUtils";
 import Classroom from "@/components/Classroom";
 import { useRouter } from "next/router";
+import { BeatLoader } from "react-spinners";
 
 export default function Page() {
   const [allRoomsStatus, setAllRoomsStatus] = useState({});
@@ -42,8 +43,11 @@ export default function Page() {
         <div className="text-center text-xl font-monumentExtended">
           {router.query.building}
         </div>
+        <div className="flex flex-col text-center items-center text-xs">
+          Note that if a classroom does not appear here, no class is scheduled for that room.
+        </div>
         {isLoading ? (
-          <div>Loading...</div>
+          <BeatLoader />
         ) : (
           Object.keys(allRoomsStatus).length > 0 ? (
             Object.entries(allRoomsStatus).map(([room, status], index) => (
@@ -54,9 +58,6 @@ export default function Page() {
           )
         )}
       </div>
-      <div className="flex flex-col items-center text-xs">
-        Note that if a classroom does not appear here, no class is scheduled for that room.
-      </div>
-      </>
+    </>
   );
 }
