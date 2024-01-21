@@ -37,7 +37,7 @@ export default function Home() {
     "Patricia & Phillip Frost Art Museum",
     "Field Support building",
     "Ernest R. Graham Center",
-    "Steven and Dorothea Green Library",
+    "Green",
     "Labor Center",
     "Lakeview Halls",
     "Management and New Growth Opportunities Building",
@@ -98,7 +98,7 @@ export default function Home() {
       <section id="buildings" className="max-w-xl mx-auto grid md:grid-cols-2 grid-cols-1 gap-2 pt-6 px-2">
         {buildings.map((b, i) => {
           return (
-            <div key={i} onClick={() => handleBuildingClick(b)} className="text-black group/building grid grid-cols-2 gap-2 items-center justify-between text-xs border border-black p-2 cursor-pointer hover:bg-gray-700">
+            <div key={i} onClick={() => handleBuildingClick(b)} className="text-black group/building grid grid-cols-2 gap-2 items-center justify-between text-xs border border-black p-2 cursor-pointer hover:bg-[rgb(8,30,63)]">
               <span className="text-slate-900 text-sm group-hover/building:text-slate-100 justify-self-start">{b}</span>
               <span className="font-light text-xs text-blue-900 group-hover/building:text-slate-100 justify-self-end">3/12
                 OPEN</span>

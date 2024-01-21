@@ -6,7 +6,6 @@ export default async function handler(req, res) {
     dbConnect();
     const collection = mongoose.connection.collection('fiu-classes-collection');
     const { building } = req.query;
-    console.log(building)
     const cursor = await collection.find({
       location: { $regex: building, $options: 'i' }
     }).toArray();
