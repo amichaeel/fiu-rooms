@@ -1,4 +1,3 @@
-// pages/api/building.js
 import mongoose from 'mongoose';
 import dbConnect from '@/lib/dbconnect';
 

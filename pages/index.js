@@ -7,8 +7,8 @@ export default function Home() {
 
   const router = useRouter();
 
-  const handleBuildingClick = async (e) => {
-    router.push(`/${e.target.firstChild.data}`)
+  const handleBuildingClick = async (b) => {
+    router.push(`/${b}`)
   }
 
   const buildings = [
@@ -86,20 +86,20 @@ export default function Home() {
 
   return (
     <>
-      <section className="w-full h-fit p-16 ">
-        <div className="flex md:flex-col items-center justify-center">
-          <div className="text-gray-900 flex md:flex-row flex-col space-x-2 items-center">
-            <span className="text-3xl font-semibold ">Find open rooms </span>
-            <div className="text-4xl font-thin hover:font-bold cursor-default text-yellow-600 duration-300 transition-all"> anywhere </div>
-            <span className="text-3xl font-semibold"> on campus.</span>
+      <section className="w-full mt-20 ">
+        <div className="flex md:flex-col items-center justify-center w-full h-16 ">
+          <div className="text-gray-900 flex md:flex-row mx-16 flex-col space-x-2 items-center">
+            <span className="font-monumentExtended">find open rooms</span>
+            <span className="font-monumentExtended text-[rgb(182,134,44)]"> anywhere </span>
+            <span className="font-monumentExtended">on campus</span>
           </div>
         </div>
       </section>
       <section id="buildings" className="max-w-xl mx-auto grid md:grid-cols-2 grid-cols-1 gap-2 pt-6 px-2">
         {buildings.map((b, i) => {
           return (
-            <div key={i} onClick={handleBuildingClick} className="text-black font-semibold group/building grid grid-cols-2 gap-2 items-center justify-between text-xs bg-gray-400/10 p-2 rounded-xl cursor-pointer hover:bg-gray-700">
-              <span className="text-slate-900 text-lg group-hover/building:text-slate-100 justify-self-start">{b}</span>
+            <div key={i} onClick={() => handleBuildingClick(b)} className="text-black group/building grid grid-cols-2 gap-2 items-center justify-between text-xs border border-black p-2 cursor-pointer hover:bg-gray-700">
+              <span className="text-slate-900 text-sm group-hover/building:text-slate-100 justify-self-start">{b}</span>
               <span className="font-light text-xs text-blue-900 group-hover/building:text-slate-100 justify-self-end">3/12
                 OPEN</span>
             </div>

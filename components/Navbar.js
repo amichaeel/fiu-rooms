@@ -2,23 +2,32 @@ import React from "react";
 import Image from "next/image";
 import FIULogo from "@/public/images/fiu-logo.png"
 import { useRouter } from "next/router";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faHamburger, faSearch } from "@fortawesome/free-solid-svg-icons";
 
 export default function Navbar() {
   const router = useRouter();
   return (
-    <nav className="flex justify-center w-full border-b border-gray-900 h-12 bg-white">
-      <div className="flex items-center justify-between w-full max-w-5xl">
-        <div onClick={() => router.push("/")} className="flex space-x-2 items-center cursor-pointer">
-          <Image className="object-contain h-8 w-fit pl-2" src={FIULogo} alt="FIU Logo" />
-          <span className="text-gray-700 md:text-3xl text-xl font-semibold">Rooms</span>
+    <nav className="flex items-center justify-between fixed top-0 w-full h-14 border-black border-b backdrop-blur-lg">
+
+      <div className="flex items-center h-full">
+        <div className="flex items-center px-6 border-x border-black h-full hover:bg-[rgb(8,30,63)] hover:text-white">
+          <FontAwesomeIcon icon={faBars} />
         </div>
-        <div className="flex flex-row uppercase">
-          <div
-            className="flex cursor-pointer items-center justify-center md:p-3 p-2 text-xs text-gray-700 hover:text-white h-12 hover:bg-gray-700 border-l border-gray-700 md:last:border-r ">
-            Search</div>
-          <div
-            className="flex cursor-pointer items-center justify-center md:p-3 p-2 text-xs text-gray-700 hover:text-white h-12 hover:bg-gray-700 border-l border-gray-700 md:last:border-r">
-            Leave Feedback</div>
+        <div onClick={() => router.push("/")} className="h-full cursor-pointer md:border-r border-black md:px-8 pl-4 flex justify-center items-center">
+          <div className="flex items-center space-x-2">
+            <span className="font-monumentExtended text-lg font-black">FIU ROOMS</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="h-full flex space-x-4 flex-row items-center">
+        <div className="md:inline hidden">
+          leave feedback
+        </div>
+        <div className="flex cursor-pointer items-center space-x-2 border-x border-black h-full px-2 font-monumentExtended text-white bg-[rgb(8,30,63)] hover:bg-[rgb(182,134,44)] transition">
+          <FontAwesomeIcon icon={faSearch} />
+          <span>SEARCH</span>
         </div>
       </div>
     </nav>

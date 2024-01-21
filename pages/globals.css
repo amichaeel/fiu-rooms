@@ -8,11 +8,23 @@
 
 body {
   --tw-bg-opacity: 1;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+  background: rgb(247,247,247)
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@layer base {
+  @font-face {
+    font-family: 'MonumentExtended';
+    src: url(/static/fonts/monument_extended/PPMonumentExtended-Regular.otf) format(woff)
+  }
+  @font-face {
+    font-family: 'MonumentExtended';
+    font-weight: 800; 
+    src: url(/static/fonts/monument_extended/PPMonumentExtended-Black.otf) format(woff)
   }
 }

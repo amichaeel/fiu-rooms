@@ -37,9 +37,9 @@ export default function Page() {
   }, [router.isReady, router.query.building])
 
   return (
-    <div>
-      <div className="flex flex-col items-center justify-center space-y-2 py-12">
-        <div className="text-4xl font-semibold pb-12">
+    <>
+      <div className="flex flex-col items-center justify-center space-y-2 my-20">
+        <div className="text-center text-xl font-monumentExtended">
           {router.query.building}
         </div>
         {isLoading ? (
@@ -57,6 +57,6 @@ export default function Page() {
       <div className="flex flex-col items-center text-xs">
         Note that if a classroom does not appear here, no class is scheduled for that room.
       </div>
-    </div>
+      </>
   );
 }
