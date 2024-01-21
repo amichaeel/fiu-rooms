@@ -13,12 +13,16 @@ export default function Page() {
   useEffect(() => {
     const load = async () => {
       try {
+        if (!router.query.building) {
+          return;
+        }
         const building = router.query.building
-        const uri = `/api/building?building=${building}`
+        const uri = `/api/building?building=${building}`;
         const response = await fetch(uri);
         const data = await response.json();
 
         const transformSchedule = transformClassesToSchedule(data)
+        console.log(transformSchedule)
 
         const newAllRoomsStatus = Object.entries(transformSchedule).reduce((acc, [room, schedule]) => {
           acc[room] = isRoomInUse(schedule, new Date());
@@ -26,7 +30,6 @@ export default function Page() {
         }, {});
 
         setAllRoomsStatus(newAllRoomsStatus);
-        console.log(allRoomsStatus)
 
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -46,17 +49,19 @@ export default function Page() {
         <div className="flex flex-col text-center items-center text-xs">
           Note that if a classroom does not appear here, no class is scheduled for that room.
         </div>
-        {isLoading ? (
-          <BeatLoader />
-        ) : (
-          Object.keys(allRoomsStatus).length > 0 ? (
-            Object.entries(allRoomsStatus).map(([room, status], index) => (
-              <Classroom room={room} status={status} key={index} />
-            ))
+        <div className="flex flex-col space-y-2 max-w-lg" >
+          {isLoading ? (
+            <BeatLoader />
           ) : (
-            <div>No data found</div>
-          )
-        )}
+            Object.keys(allRoomsStatus).length > 0 ? (
+              Object.entries(allRoomsStatus).map(([room, status], index) => (
+                <Classroom room={room} status={status} key={index} />
+              ))
+            ) : (
+              <div>No data found</div>
+            )
+          )}
+        </div>
       </div>
     </>
   );

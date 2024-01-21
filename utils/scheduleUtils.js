@@ -1,6 +1,6 @@
 export function transformClassesToSchedule(classesData) {
   if (!classesData) { 
-    console.log("No class data found! Exiting,")
+    console.log("No class data found! Exiting.")
     return
   }
   return classesData.reduce((acc, cls) => {
@@ -20,6 +20,7 @@ export function isDayMatching(scheduleDay, currentDay) {
 
 export function isTimeInRange(scheduleTime, currentTime) {
   const [startTime, endTime] = scheduleTime.split(' - ');
+  
   const [startHours, startMinutes] = startTime.endsWith('PM') ?
       startTime.replace('PM', '').split(':').map(Number) :
       startTime.replace('AM', '').split(':').map(Number);
@@ -38,7 +39,6 @@ export function isTimeInRange(scheduleTime, currentTime) {
 
 export function isRoomInUse(roomSchedule, currentTime) {
   const currentDay = currentTime.getDay(); // 0 for Sunday, 1 for Monday, etc.
-
   for (const timeSlot of roomSchedule) {
       const [scheduleDay, scheduleTime] = timeSlot.split(' ');
       if (isDayMatching(scheduleDay, currentDay) && isTimeInRange(scheduleTime, currentTime)) {

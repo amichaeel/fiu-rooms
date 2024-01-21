@@ -2,14 +2,11 @@ import React, { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useRouter } from "next/router";
+import Building from "@/components/Building";
 
 export default function Home() {
 
   const router = useRouter();
-
-  const handleBuildingClick = async (b) => {
-    router.push(`/${b}`)
-  }
 
   const buildings = [
     "Academic Health Center 2",
@@ -22,7 +19,7 @@ export default function Home() {
     "College of Business Complex",
     "Chem & Physics",
     "Deuxieme Maison",
-    "Everglades Hall",
+    "Everglades Residence Hall",
     "Engineering Center",
     "Patricia&PhilipFrostMuseum",
     "Graham Center",
@@ -34,8 +31,6 @@ export default function Home() {
     "Owa Ehan",
     "Charles E. Perry",
     "Paul Cejas Architecture",
-    "Panther Parking Garage",
-    "Red Parking Garage",
     "PG5 Market Station",
     "Parking Garage 6",
     "Ryder Business",
@@ -60,11 +55,7 @@ export default function Home() {
       <section id="buildings" className="max-w-xl mx-auto grid md:grid-cols-2 grid-cols-1 gap-2 pt-6 px-2">
         {buildings.map((b, i) => {
           return (
-            <div key={i} onClick={() => handleBuildingClick(b)} className="text-black group/building grid grid-cols-2 gap-2 items-center justify-between text-xs border border-black p-2 cursor-pointer hover:bg-[rgb(8,30,63)]">
-              <span className="text-slate-900 text-sm group-hover/building:text-slate-100 justify-self-start">{b}</span>
-              <span className="font-light text-xs text-blue-900 group-hover/building:text-slate-100 justify-self-end">3/12
-                OPEN</span>
-            </div>
+            <Building key={i} building={b} />
           )
         })}
       </section>
