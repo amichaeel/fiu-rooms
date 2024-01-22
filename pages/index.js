@@ -13,7 +13,7 @@ export default function Home() {
     "Academic Health Center 3",
     "Academic Health Center 4",
     "Academic Health Center 5",
-    "Charles E. Perry (PC)",
+    "Charles E. Perry",
     "Comp, Arts, Sci & Educat",
     "College of Business Complex",
     "Chem & Physics",
