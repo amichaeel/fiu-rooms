@@ -1,15 +1,15 @@
 export function transformClassesToSchedule(classesData) {
-  if (!classesData) { 
+  if (!classesData) {
     console.log("No class data found! Exiting.")
     return
   }
   return classesData.reduce((acc, cls) => {
-      const room = cls.location;
-      if (!acc[room]) {
-          acc[room] = [];
-      }
-      acc[room].push(cls.time);
-      return acc;
+    const room = cls.location;
+    if (!acc[room]) {
+      acc[room] = [];
+    }
+    acc[room].push(cls.time);
+    return acc;
   }, {});
 }
 
@@ -19,14 +19,13 @@ export function isDayMatching(scheduleDay, currentDay) {
 }
 
 export function isTimeInRange(scheduleTime, currentTime) {
-  const [startTime, endTime] = scheduleTime.split(' - ');
-  
+  const [startTime, endTime] = scheduleTime.split('-');
   const [startHours, startMinutes] = startTime.endsWith('PM') ?
-      startTime.replace('PM', '').split(':').map(Number) :
-      startTime.replace('AM', '').split(':').map(Number);
+    startTime.replace('PM', '').trim().split(':').map(Number) :
+    startTime.replace('AM', '').trim().split(':').map(Number);
   const [endHours, endMinutes] = endTime.endsWith('PM') ?
-      endTime.replace('PM', '').split(':').map(Number) :
-      endTime.replace('AM', '').split(':').map(Number);
+    endTime.replace('PM', '').trim().split(':').map(Number) :
+    endTime.replace('AM', '').trim().split(':').map(Number);
 
   // Convert to 24-hour format
   const start = new Date();
@@ -39,11 +38,13 @@ export function isTimeInRange(scheduleTime, currentTime) {
 
 export function isRoomInUse(roomSchedule, currentTime) {
   const currentDay = currentTime.getDay(); // 0 for Sunday, 1 for Monday, etc.
-  for (const timeSlot of roomSchedule) {
-      const [scheduleDay, scheduleTime] = timeSlot.split(' ');
-      if (isDayMatching(scheduleDay, currentDay) && isTimeInRange(scheduleTime, currentTime)) {
-          return true;
-      }
+  for (let timeSlot of roomSchedule) {
+    timeSlot = timeSlot.replace(' -', '-').replace('- ', '-')
+    const scheduleDay = timeSlot.split(' ')[0]
+    const scheduleTime = timeSlot.split(' ')[1]
+    if (isDayMatching(scheduleDay, currentDay) && isTimeInRange(scheduleTime, currentTime)) {
+      return true;
+    }
   }
   return false;
 }
