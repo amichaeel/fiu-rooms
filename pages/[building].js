@@ -22,7 +22,6 @@ export default function Page() {
         const data = await response.json();
 
         const transformSchedule = transformClassesToSchedule(data)
-        console.log(transformSchedule)
 
         const newAllRoomsStatus = Object.entries(transformSchedule).reduce((acc, [room, schedule]) => {
           acc[room] = isRoomInUse(schedule, new Date());
@@ -30,6 +29,7 @@ export default function Page() {
         }, {});
 
         setAllRoomsStatus(newAllRoomsStatus);
+        console.log(allRoomsStatus)
 
       } catch (error) {
         console.error('Error fetching data:', error);

@@ -14,8 +14,8 @@ export function transformClassesToSchedule(classesData) {
 }
 
 export function isDayMatching(scheduleDay, currentDay) {
-  const days = { 'Mo': 1, 'Tu': 2, 'We': 3, 'Th': 4, 'Fr': 5, 'Sa': 6, 'Su': 0 };
-  return scheduleDay.includes(currentDay) || days[scheduleDay] === currentDay;
+  const days = { 1: 'Mo', 2: 'Tu', 3: 'We', 4: 'Th', 5: 'Fr', 6: 'Sa', 0: 'Su', }
+  return scheduleDay.includes(days[currentDay])
 }
 
 export function isTimeInRange(scheduleTime, currentTime) {
@@ -40,7 +40,7 @@ export function isRoomInUse(roomSchedule, currentTime) {
   const currentDay = currentTime.getDay(); // 0 for Sunday, 1 for Monday, etc.
   for (let timeSlot of roomSchedule) {
     timeSlot = timeSlot.replace(' - ', '-')
-    const scheduleDay = timeSlot.split(' ')[0]
+    const scheduleDay = timeSlot.split(' ')[0].match(/.{1,2}/g)
     const scheduleTime = timeSlot.split(' ')[1]
     if (isDayMatching(scheduleDay, currentDay) && isTimeInRange(scheduleTime, currentTime)) {
       return true;
