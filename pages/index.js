@@ -13,7 +13,7 @@ export default function Home() {
     "Academic Health Center 3",
     "Academic Health Center 4",
     "Academic Health Center 5",
-    "Art Studio",
+    "Studio",
     "Stocker Astroscience Center",
     "Comp, Arts, Sci & Educat",
     "College of Business Complex",

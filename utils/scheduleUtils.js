@@ -39,7 +39,7 @@ export function isTimeInRange(scheduleTime, currentTime) {
 export function isRoomInUse(roomSchedule, currentTime) {
   const currentDay = currentTime.getDay(); // 0 for Sunday, 1 for Monday, etc.
   for (let timeSlot of roomSchedule) {
-    timeSlot = timeSlot.replace(' -', '-').replace('- ', '-')
+    timeSlot = timeSlot.replace(' - ', '-')
     const scheduleDay = timeSlot.split(' ')[0]
     const scheduleTime = timeSlot.split(' ')[1]
     if (isDayMatching(scheduleDay, currentDay) && isTimeInRange(scheduleTime, currentTime)) {
