@@ -4,10 +4,12 @@ import Footer from "@/components/Footer"
 
 export default function MyApp({ Component, pageProps }) {
   return (
+    <div className="flex flex-col h-screen justify-between">
       <div>
         <Navbar />
         <Component {...pageProps} />
-        <Footer />
       </div>
+      <Footer />
+    </div>
   )
 }

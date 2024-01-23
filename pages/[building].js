@@ -41,7 +41,7 @@ export default function Page() {
   }, [router.isReady, router.query.building])
 
   return (
-    <>
+    <div>
       <div className="flex flex-col items-center justify-center space-y-2 my-20">
         <div className="text-center text-xl font-monumentExtended">
           {router.query.building}
@@ -49,13 +49,13 @@ export default function Page() {
         <div className="flex flex-col text-center items-center text-xs">
           Note that if a classroom does not appear here, no class is scheduled for that room.
         </div>
-        <div className="flex flex-col space-y-2 max-w-lg" >
+        <div className="flex flex-col items-center justify-center space-y-2 p-2 max-w-lg w-full" >
           {isLoading ? (
             <BeatLoader />
           ) : (
             Object.keys(allRoomsStatus).length > 0 ? (
               Object.entries(allRoomsStatus).map(([room, status], index) => (
-                <Classroom room={room} status={status} key={index} />
+                <Classroom room={room} status={status[0]} endTime={status[1]} key={index} />
               ))
             ) : (
               <div>No data found</div>
@@ -63,6 +63,6 @@ export default function Page() {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 }

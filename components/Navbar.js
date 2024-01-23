@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Menu from "./Menu";
 import Image from "next/image";
 import FIULogo from "@/public/images/fiu-logo.png"
@@ -6,11 +6,35 @@ import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faHamburger, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Transition } from '@headlessui/react'
+import { Inter } from "next/font/google";
 import Link from "next/link";
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+})
+
+// function useOutsideAlerter(ref, onOutsideClick) {
+//   useEffect(() => {
+//     function handleClickOutside(event) {
+//       if (ref.current && !ref.current.contains(event.target)) {
+//         onOutsideClick();
+//       }
+//     }
+
+//     document.addEventListener("mousedown", handleClickOutside);
+//     return () => {
+//       document.removeEventListener("mousedown", handleClickOutside);
+//     };
+//   }, [ref, onOutsideClick]);
+// }
 
 export default function Navbar() {
   const [openMenu, setOpenMenu] = useState(false);
+  const transitionRef = useRef(null);
   const router = useRouter();
+
+  // useOutsideAlerter(transitionRef, () => setOpenMenu(false));
 
   return (
     <>
@@ -26,7 +50,7 @@ export default function Navbar() {
       >
         <div className="flex flex-col">
           <div className="m-7"></div>
-          <div className="flex flex-col space-y-4 p-6">
+          <div className={`flex flex-col space-y-4 p-6 ${inter.className}`}>
             <Link href="/" className="p-4 cursor-pointer text-4xl w-fit transition-all duration-300 hover:text-[rgb(182,134,44)]">open rooms</Link>
             <Link href="https://www.github.com/amichaeel" className="p-4 cursor-pointer text-4xl w-fit transition-all duration-300 hover:text-[rgb(182,134,44)]">github</Link>
             <span className="text-x p-4 font-thin">This app is in beta. More features to come!</span>
@@ -34,7 +58,7 @@ export default function Navbar() {
         </div>
       </Transition>
       <div>
-        <nav className="flex items-center justify-between translate fixed top-0 w-full h-14 border-black border-b bg-white/90 backdrop-blur-lg">
+        <nav className="flex items-center justify-between translate fixed top-0 w-full h-14 border-black border-b bg-white/60 backdrop-blur-lg">
           <div className="flex items-center h-full">
             <div onClick={() => setOpenMenu(!openMenu)} className={`flex items-center cursor-pointer px-6 border-x border-black h-full hover:bg-[rgb(8,30,63)] hover:text-white ` + (openMenu && "bg-[rgb(8,30,63)] text-white")}>
               <FontAwesomeIcon icon={faBars} />

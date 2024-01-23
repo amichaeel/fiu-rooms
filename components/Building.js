@@ -34,7 +34,7 @@ export default function Building({ building }) {
         // Calculating availability based on the new allRoomsStatus
         const tempAvailability = [0, 0];
         for (const inUse of Object.values(newAllRoomsStatus)) {
-          if (!inUse) { tempAvailability[0] += 1; }
+          if (!inUse[0]) { tempAvailability[0] += 1; }
           tempAvailability[1] += 1;
         }
         setAvailability(tempAvailability);

@@ -32,8 +32,10 @@ export function isTimeInRange(scheduleTime, currentTime) {
   start.setHours(startHours + (startTime.endsWith('PM') && startHours !== 12 ? 12 : 0), startMinutes, 0);
   const end = new Date();
   end.setHours(endHours + (endTime.endsWith('PM') && endHours !== 12 ? 12 : 0), endMinutes, 0);
-
-  return currentTime >= start && currentTime <= end;
+  if (currentTime >= start && currentTime <= end) {
+    return [true, end]
+  }
+  return [false]
 }
 
 export function isRoomInUse(roomSchedule, currentTime) {
@@ -42,9 +44,9 @@ export function isRoomInUse(roomSchedule, currentTime) {
     timeSlot = timeSlot.replace(' - ', '-')
     const scheduleDay = timeSlot.split(' ')[0].match(/.{1,2}/g)
     const scheduleTime = timeSlot.split(' ')[1]
-    if (isDayMatching(scheduleDay, currentDay) && isTimeInRange(scheduleTime, currentTime)) {
-      return true;
+    if (isDayMatching(scheduleDay, currentDay) && isTimeInRange(scheduleTime, currentTime)[0]) {
+      return [true, isTimeInRange(scheduleTime, currentTime)[1]] ;
     }
   }
-  return false;
+  return [false];
 }
