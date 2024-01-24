@@ -35,6 +35,7 @@ export function isTimeInRange(scheduleTime, currentTime) {
   if (currentTime >= start && currentTime <= end) {
     return [true, end]
   }
+  // TO DO: Find the start time of the next class 
   return [false]
 }
 
@@ -48,5 +49,6 @@ export function isRoomInUse(roomSchedule, currentTime) {
       return [true, isTimeInRange(scheduleTime, currentTime)[1]] ;
     }
   }
+  // Use isTimeInRange to find the start time of the next class.
   return [false];
 }
