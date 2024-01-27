@@ -46,7 +46,7 @@ export default function Page() {
         <div className="text-center text-xl font-monumentExtended">
           {router.query.building}
         </div>
-        <div className="flex flex-col text-center items-center text-xs">
+        <div className="flex flex-col text-center items-center text-xs p-3">
           Note that if a classroom does not appear here, no class is scheduled for that room.
         </div>
         <div className="flex flex-col items-center justify-center space-y-2 p-2 max-w-lg w-full" >
