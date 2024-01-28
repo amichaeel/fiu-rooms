@@ -43,7 +43,7 @@ export default function Home() {
 
   return (
     <div>
-      <section className="w-full md:mt-0 mt-20">
+      <section className="w-full mt-20">
         <div className="flex md:flex-col items-center justify-center w-full h-16 ">
           <div className="text-gray-900 flex md:flex-row mx-16 flex-col space-x-2 items-center">
             <span className="font-monumentExtended">find open rooms</span>

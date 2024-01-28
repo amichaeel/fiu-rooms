@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faDotCircle } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faCircleDot, faCircleInfo, faDotCircle, faInfo } from '@fortawesome/free-solid-svg-icons';
 import { Transition } from '@headlessui/react';
 import { Inter } from 'next/font/google'
 
@@ -12,14 +12,19 @@ const inter = Inter({
 export default function Classroom({ room, status, endTime }) {
   const [moreInfoActive, setMoreInfoActive] = useState(false);
   return (
-    <div className='border border-black m-2 h-full w-full'>
-      <div className='px-3 py-2 grid grid-cols-2 w-full h-full max-w-lg'>
-        <div className="font-bold">{room}</div>
+    <div className='bg-base-200 flex flex-col items-center justify-center rounded-xl h-full w-full'>
+      <div className='p-2 grid grid-cols-3 w-full h-full max-w-lg'>
+        <div className="col-span-2 w-fit p-2 transition rounded-xl ">
+          <div className="font-semibold md:text-base text-sm">{room}</div>
+        </div>
         <div className="justify-self-end">
           <div className='flex h-full items-center text-xs'>
             <div className='flex items-center'>
-              <span className=''>{status ? " Class In Progress" : " Open"}</span>
-              <span><FontAwesomeIcon className={`text-xs pl-2 ${status ? 'text-red-600' : 'text-green-600'}`} icon={faDotCircle} /></span>
+              <span className='font-semibold'>{status ? " In Use" : " Open"}</span>
+              <span><FontAwesomeIcon className={`text-xs pl-2 ${status ? 'text-red-600' : 'text-green-600'}`} icon={faCircleDot} /></span>
+              <div onClick={() => setMoreInfoActive(!moreInfoActive)} className="col-span-2 btn btn-sm btn-circle btn-outline ml-2 cursor-pointer w-fit p-2 transition">
+                <FontAwesomeIcon icon={faChevronDown} className={`transition ` + (moreInfoActive ? 'rotate-180' : '')} />
+              </div>
             </div>
           </div>
         </div>
@@ -43,11 +48,7 @@ export default function Classroom({ room, status, endTime }) {
           })()}
         </div>
       )}
-      <div onClick={() => setMoreInfoActive(!moreInfoActive)} className='w-full flex flex-col cursor-pointer items-center bg-black/[5%] transition gap-2 p-1 justify-center text-xs border border-t-black'>
-        <div className="flex transition lg:hover:bg-[rgb(182,134,44)] items-center justify-center bg-[rgb(8,30,63)] text-white uppercase w-full p-2 gap-2">
-          <span className={`text-[7pt] font-monumentExtended`}>Room information</span>
-          <FontAwesomeIcon icon={faChevronDown} className={`transition ` + (moreInfoActive ? 'rotate-180' : '')} />
-        </div>
+      <div className='flex flex-col cursor-pointer transition gap-2 text-xs'>
         <Transition
           show={moreInfoActive}
           enter="transition ease-out duration-300"

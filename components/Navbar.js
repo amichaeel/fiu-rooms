@@ -1,11 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import Menu from "./Menu";
-import Image from "next/image";
-import FIULogo from "@/public/images/fiu-logo.png"
-import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faHamburger, faSearch } from "@fortawesome/free-solid-svg-icons";
-import { Transition } from '@headlessui/react'
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import { Inter } from "next/font/google";
 import Link from "next/link";
 
@@ -14,75 +10,35 @@ const inter = Inter({
   display: 'swap',
 })
 
-// function useOutsideAlerter(ref, onOutsideClick) {
-//   useEffect(() => {
-//     function handleClickOutside(event) {
-//       if (ref.current && !ref.current.contains(event.target)) {
-//         onOutsideClick();
-//       }
-//     }
-
-//     document.addEventListener("mousedown", handleClickOutside);
-//     return () => {
-//       document.removeEventListener("mousedown", handleClickOutside);
-//     };
-//   }, [ref, onOutsideClick]);
-// }
-
 export default function Navbar() {
-  const [openMenu, setOpenMenu] = useState(false);
-  const transitionRef = useRef(null);
-  const router = useRouter();
-
-  // useOutsideAlerter(transitionRef, () => setOpenMenu(false));
-
   return (
     <>
-      <Transition
-        show={openMenu}
-        enter="transition ease-out duration-200 transform"
-        enterFrom="-translate-y-full"
-        enterTo="translate-y-0"
-        leave="transition ease-in duration-200 transform"
-        leaveFrom="translate-y-0"
-        leaveTo="-translate-y-full"
-        className="w-full fixed top-0 text-white bg-[rgb(8,30,63)]"
-      >
-        <div className="flex flex-col">
-          <div className="m-7"></div>
-          <div className={`flex flex-col space-y-4 p-6 ${inter.className}`}>
-            <Link href="/" className="p-4 cursor-pointer text-4xl w-fit transition-all duration-300 hover:text-[rgb(182,134,44)]">open rooms</Link>
-            <Link href="https://www.github.com/amichaeel" className="p-4 cursor-pointer text-4xl w-fit transition-all duration-300 hover:text-[rgb(182,134,44)]">github</Link>
-            <span className="text-x p-4 font-thin">This app is in beta. More features to come!</span>
+      <div className="navbar backdrop-blur-lg fixed z-50">
+        <div className="navbar-start">
+          <div className="dropdown">
+            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
+            </div>
+            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+              <li><Link href="/">Homepage</Link></li>
+              <li><Link href="https://www.github.com/amichaeel">Github</Link></li>
+            </ul>
           </div>
         </div>
-      </Transition>
-      <div>
-        <nav className="flex items-center justify-between translate fixed top-0 w-full h-14 border-black border-b bg-white/60 backdrop-blur-lg">
-          <div className="flex items-center h-full">
-            <div onClick={() => setOpenMenu(!openMenu)} className={`flex items-center cursor-pointer px-6 border-x border-black h-full hover:bg-[rgb(8,30,63)] hover:text-white ` + (openMenu && "bg-[rgb(8,30,63)] text-white")}>
-              <FontAwesomeIcon icon={faBars} />
-            </div>
-            <div onClick={() => router.push("/")} className="h-full cursor-pointer md:border-r border-black md:px-8 pl-4 flex justify-center items-center">
-              <div className="flex items-center space-x-2">
-                <span className="font-monumentExtended text-lg font-black">FIU ROOMS</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="h-full flex space-x-4 flex-row items-center">
-            {/* <div className="md:inline hidden cursor-pointer transition-all duration-300 hover:text-[rgb(182,134,44)]">
-              login
-            </div>
-            <div className="md:inline hidden cursor-pointer transition-all duration-300 hover:text-[rgb(182,134,44)]">
-              sign up
-            </div> */}
-            <div className="flex cursor-pointer items-center space-x-2 border-x border-black h-full px-4 font-monumentExtended text-white bg-[rgb(8,30,63)] hover:bg-[rgb(182,134,44)] transition">
-              {/* <FontAwesomeIcon icon={faSearch} /> */}
-              <span className="text-sm">BETA</span>
-            </div>
-          </div>
-        </nav>
+        <div className="navbar-center">
+          <Link className="btn btn-ghost" href="/">
+            <span className="font-monumentExtended text-xl">FIU ROOMS</span>
+            <span className="text-xs font-base font-thin">BETA</span>
+          </Link>
+        </div>
+        <div className="navbar-end">
+          <button className="btn btn-ghost btn-circle">
+            <FontAwesomeIcon icon={faSearch} className="text-base" />
+          </button>
+          <button className="btn btn-ghost btn-circle">
+            <Link href="mailto:mail@anthonymham.com"><FontAwesomeIcon icon={faEnvelope} className="text-base" /></Link>
+          </button>
+        </div>
       </div>
     </>
   )

@@ -43,7 +43,7 @@ export default function Page() {
   return (
     <div>
       <div className="flex flex-col items-center justify-center space-y-2 my-20">
-        <div className="text-center text-xl font-monumentExtended">
+        <div className="text-center text-xl mx-2 font-monumentExtended">
           {router.query.building}
         </div>
         <div className="flex flex-col text-center items-center text-xs p-3">
