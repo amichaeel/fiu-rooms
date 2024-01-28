@@ -12,17 +12,17 @@ const inter = Inter({
 export default function Classroom({ room, status, endTime }) {
   const [moreInfoActive, setMoreInfoActive] = useState(false);
   return (
-    <div className='bg-base-200 flex flex-col items-center justify-center rounded-xl h-full w-full'>
-      <div className='p-2 grid grid-cols-3 w-full h-full max-w-lg'>
+    <div className='bg-base-200 rounded-xl w-full'>
+      <div className='p-2 grid grid-cols-3 w-full max-w-lg'>
         <div className="col-span-2 w-fit p-2 transition rounded-xl ">
-          <div className="font-semibold md:text-base text-sm">{room}</div>
+          <div className="font-semibold">{room}</div>
         </div>
         <div className="justify-self-end">
-          <div className='flex h-full items-center text-xs'>
-            <div className='flex items-center'>
+          <div className='flex items-center text-xs'>
+            <div>
               <span className='font-semibold'>{status ? " In Use" : " Open"}</span>
               <span><FontAwesomeIcon className={`text-xs pl-2 ${status ? 'text-red-600' : 'text-green-600'}`} icon={faCircleDot} /></span>
-              <div onClick={() => setMoreInfoActive(!moreInfoActive)} className="col-span-2 btn btn-sm btn-circle btn-outline ml-2 cursor-pointer w-fit p-2 transition">
+              <div onClick={() => setMoreInfoActive(!moreInfoActive)} className="btn btn-sm btn-circle btn-outline ml-2 cursor-pointer w-fit p-2 transition">
                 <FontAwesomeIcon icon={faChevronDown} className={`transition ` + (moreInfoActive ? 'rotate-180' : '')} />
               </div>
             </div>
@@ -62,7 +62,6 @@ export default function Classroom({ room, status, endTime }) {
             <span className='font-semibold'>More information about this classroom be available here soon!</span>
             <span>Ex: Fixed Seating, Podium PC, Tables and Chairs, Tiered Seating, Video Conferencing</span>
             <span>Max Copacity: 34</span>
-            {/* <span className='font-light text-[8pt] pt-6'>Note: To use some of the classrooms features, you must notify FIU. FIU Rooms is not responsible for any unauthorized use of equipment.</span> */}
           </div>
         </Transition>
       </div>

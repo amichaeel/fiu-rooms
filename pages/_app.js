@@ -11,9 +11,9 @@ export default function MyApp({ Component, pageProps }) {
           <Navbar />
           <Component {...pageProps} />
         </div>
+        <Analytics />
         <Footer />
       </div>
-      <Analytics />
     </>
   )
 }
