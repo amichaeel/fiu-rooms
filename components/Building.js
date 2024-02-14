@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { transformClassesToSchedule, isRoomInUse } from "@/utils/scheduleUtils";
-import { PulseLoader } from "react-spinners";
+import { MoonLoader } from "react-spinners";
 import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 
 export default function Building({ building }) {
@@ -51,16 +52,16 @@ export default function Building({ building }) {
   }, [building]);
 
   return (
-    <a href={`/${building}`} onClick={() => handleBuildingClick(building)} className="text-black group/building grid card bg-base-200 grid-cols-2 gap-2 items-center justify-between p-4 transition cursor-pointer hover:bg-[rgb(8,30,63)]">
-      <span className="text-slate-900 text-md group-hover/building:text-slate-100 justify-self-start">{building}</span>
+    <a href={`/${building}`} onClick={() => handleBuildingClick(building)} className="text-black h-[100px] group/building grid card bg-neutral-200/60 dark:bg-[#353941] grid-cols-2 gap-2 items-center justify-between p-4 transition cursor-pointer hover:bg-neutral-300 dark:hover:bg-[#4d525d]">
+      <span className="text-slate-900 dark:text-slate-300 text-md justify-self-start">{building}</span>
       {isLoading ? (
         <div className="justify-self-end text-xs">
-          <PulseLoader speedMultiplier={0.7} color="rgb(8,30,63,1)" size={10} />
+          <MoonLoader speedMultiplier={0.7} color="rgb(0,0,0)" size={35}  />
         </div>
       ) : (
-        <div className="font-semibold text-xs text-blue-900 group-hover/building:text-slate-100 justify-self-end">
+        <div className="font-semibold text-xs text-blue-900 dark:text-slate-300 justify-self-end">
           <div className="radial-progress" style={{ "--value":(availability[0] / availability[1]) * 100 >> 0, "--size": "4rem" }} role="progressbar">{(availability[0] / availability[1]) * 100 >> 0}%</div>
-          <FontAwesomeIcon icon={faChevronRight} className="ml-3" />
+          <ChevronRightIcon className="ml-3"/>
         </div>
       )}
     </a>

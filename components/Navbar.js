@@ -4,6 +4,8 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import { Inter } from "next/font/google";
 import Link from "next/link";
+import SearchIcon from '@mui/icons-material/Search';
+import EmailIcon from '@mui/icons-material/Email';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -13,7 +15,7 @@ const inter = Inter({
 export default function Navbar() {
   return (
     <>
-      <div className="navbar backdrop-blur-lg fixed z-50">
+      <div className="navbar backdrop-blur-lg fixed z-50 text-slate-700 dark:text-slate-100">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
@@ -27,16 +29,18 @@ export default function Navbar() {
         </div>
         <div className="navbar-center">
           <Link className="btn btn-ghost" href="/">
-            <span className="font-monumentExtended text-xl">FIU ROOMS</span>
-            <span className="text-xs font-base font-thin">BETA</span>
+            <div className="flex flex-col relative items-center justify-center">
+              <span className="font-monumentExtended text-xl">FIU ROOMS</span>
+              <span className="text-[10px] font-light">BETA</span>
+            </div>
           </Link>
         </div>
         <div className="navbar-end">
           <button className="btn btn-ghost btn-circle">
-            <FontAwesomeIcon icon={faSearch} className="text-base" />
+            <SearchIcon />
           </button>
           <button className="btn btn-ghost btn-circle">
-            <Link href="mailto:mail@anthonymham.com"><FontAwesomeIcon icon={faEnvelope} className="text-base" /></Link>
+            <Link href="mailto:mail@anthonymham.com"><EmailIcon /></Link>
           </button>
         </div>
       </div>

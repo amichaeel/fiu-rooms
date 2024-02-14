@@ -9,10 +9,10 @@ const inter = Inter({
   display: 'swap',
 })
 
-export default function Classroom({ room, status, endTime }) {
+export default function Classroom({ room, status, endTime, startTime }) {
   const [moreInfoActive, setMoreInfoActive] = useState(false);
   return (
-    <div className='bg-base-200 rounded-xl w-full'>
+    <div className='bg-neutral-200/60 text-black dark:bg-[#353941] dark:text-slate-200 rounded-xl w-full'>
       <div className='p-2 grid grid-cols-3 w-full max-w-lg'>
         <div className="col-span-2 w-fit p-2 transition rounded-xl ">
           <div className="font-semibold">{room}</div>
@@ -33,9 +33,8 @@ export default function Classroom({ room, status, endTime }) {
         <div className={`flex flex-col py-4 font-semibold text-xs items-center justify-center ${inter.className}`}>
           {(() => {
             const currentTime = new Date().getTime();
-            const classDurationMillis = 2 * 60 * 60 * 1000; // Example: 2 hours in milliseconds
+            const startTimeMillis = startTime.getTime()
             const endTimeMillis = endTime.getTime();
-            const startTimeMillis = endTimeMillis - classDurationMillis; // Calculate start time
             const totalDurationMillis = endTimeMillis - startTimeMillis;
             const elapsedMillis = currentTime - startTimeMillis;
 
@@ -50,16 +49,24 @@ export default function Classroom({ room, status, endTime }) {
 
             if (hours > 0) {
               return (
-                <div className='flex flex-col items-center justify-center space-y-2'>
-                  <span>Ends in {hours} hours and {minutes} minutes ({endTime.toLocaleString().split(", ")[1].replace(":00", "")})</span>
-                  <progress className="progress w-56" value={elapsedMillis} max={totalDurationMillis}></progress>
+                <div className='flex flex-col items-center justify-center'>
+                  <div className='flex flex-row justify-between w-full text-[10px] opacity-85'>
+                    <span>{startTime.toLocaleString().split(", ")[1].replace(":00", "")}</span>
+                    <span>{endTime.toLocaleString().split(", ")[1].replace(":00", "")}</span>
+                  </div>
+                  <progress className="progress w-56 mb-4" value={elapsedMillis} max={totalDurationMillis}></progress>
+                  <span>Ends in {hours} hours and {minutes} minutes</span>
                 </div>
               );
             }
             return (
-              <div className='flex flex-col items-center justify-center space-y-2'>
-                <span>Ends in {minutes} minutes ({endTime.toLocaleString().split(", ")[1].replace(":00", "")})</span>
-                <progress className="progress w-56" value={elapsedMillis} max={totalDurationMillis}></progress>
+              <div className='flex flex-col items-center justify-center'>
+                <div className='flex flex-row justify-between w-full text-[10px] opacity-85'>
+                    <span>{startTime.toLocaleString().split(", ")[1].replace(":00", "")}</span>
+                    <span>{endTime.toLocaleString().split(", ")[1].replace(":00", "")}</span>
+                  </div>
+                <progress className="progress w-56 mb-4" value={elapsedMillis} max={totalDurationMillis}></progress>
+                <span className=''>Ends in {minutes} minutes</span>
               </div>);
           })()}
         </div>

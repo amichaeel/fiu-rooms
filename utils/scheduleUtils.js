@@ -33,7 +33,7 @@ export function isTimeInRange(scheduleTime, currentTime) {
   const end = new Date();
   end.setHours(endHours + (endTime.endsWith('PM') && endHours !== 12 ? 12 : 0), endMinutes, 0);
   if (currentTime >= start && currentTime <= end) {
-    return [true, end]
+    return [true, end, start]
   }
   // TO DO: Find the start time of the next class 
   return [false]
@@ -46,7 +46,7 @@ export function isRoomInUse(roomSchedule, currentTime) {
     const scheduleDay = timeSlot.split(' ')[0].match(/.{1,2}/g)
     const scheduleTime = timeSlot.split(' ')[1]
     if (isDayMatching(scheduleDay, currentDay) && isTimeInRange(scheduleTime, currentTime)[0]) {
-      return [true, isTimeInRange(scheduleTime, currentTime)[1]] ;
+      return [true, isTimeInRange(scheduleTime, currentTime)[1], isTimeInRange(scheduleTime, currentTime)[2]] ;
     }
   }
   // Use isTimeInRange to find the start time of the next class.

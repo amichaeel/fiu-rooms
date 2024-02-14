@@ -6,7 +6,7 @@ import { Analytics } from '@vercel/analytics/react'
 export default function MyApp({ Component, pageProps }) {
   return (
     <>
-      <div className="flex flex-col h-screen justify-between">
+      <div className="flex min-h-screen flex-col justify-between">
         <div>
           <Navbar />
           <Component {...pageProps} />

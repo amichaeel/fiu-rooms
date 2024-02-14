@@ -46,9 +46,9 @@ export default function Home() {
       <section className="w-full mt-20">
         <div className="flex md:flex-col items-center justify-center w-full h-16 ">
           <div className="text-gray-900 flex md:flex-row mx-16 flex-col space-x-2 items-center">
-            <span className="font-monumentExtended">find open rooms</span>
+            <span className="font-monumentExtended dark:text-slate-100">find open rooms</span>
             <span className="font-monumentExtended text-[rgb(182,134,44)]"> anywhere </span>
-            <span className="font-monumentExtended">on campus</span>
+            <span className="font-monumentExtended dark:text-slate-100">on campus</span>
           </div>
         </div>
       </section>

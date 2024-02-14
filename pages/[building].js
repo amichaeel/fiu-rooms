@@ -29,8 +29,6 @@ export default function Page() {
         }, {});
 
         setAllRoomsStatus(newAllRoomsStatus);
-        console.log(allRoomsStatus)
-
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
@@ -55,7 +53,7 @@ export default function Page() {
           ) : (
             Object.keys(allRoomsStatus).length > 0 ? (
               Object.entries(allRoomsStatus).map(([room, status], index) => (
-                <Classroom room={room} status={status[0]} endTime={status[1]} key={index} />
+                <Classroom room={room} status={status[0]} endTime={status[1]} startTime={status[2]} key={index} />
               ))
             ) : (
               <div>No data found</div>
