@@ -52,7 +52,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section id="buildings" className="max-w-xl mx-auto grid md:grid-cols-2 grid-cols-1 gap-2 pt-6 px-2">
+      <section id="buildings" className="max-w-3xl mx-auto grid md:grid-cols-2 grid-cols-1 gap-2 pt-6 px-2">
         {buildings.map((b, i) => {
           return (
             <Building key={i} building={b} />

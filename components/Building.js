@@ -52,16 +52,16 @@ export default function Building({ building }) {
 
   return (
     <a href={`/${building}`} onClick={() => handleBuildingClick(building)} className="text-black group/building grid card bg-base-200 grid-cols-2 gap-2 items-center justify-between p-4 transition cursor-pointer hover:bg-[rgb(8,30,63)]">
-      <span className="text-slate-900 text-sm group-hover/building:text-slate-100 justify-self-start">{building}</span>
+      <span className="text-slate-900 text-md group-hover/building:text-slate-100 justify-self-start">{building}</span>
       {isLoading ? (
         <div className="justify-self-end text-xs">
           <PulseLoader speedMultiplier={0.7} color="rgb(8,30,63,1)" size={10} />
         </div>
       ) : (
-        <span className="font-semibold  text-xs text-blue-900 group-hover/building:text-slate-100 justify-self-end">
-          {availability[0]}/{availability[1]} OPEN
+        <div className="font-semibold text-xs text-blue-900 group-hover/building:text-slate-100 justify-self-end">
+          <div className="radial-progress" style={{ "--value":(availability[0] / availability[1]) * 100 >> 0, "--size": "4rem" }} role="progressbar">{(availability[0] / availability[1]) * 100 >> 0}%</div>
           <FontAwesomeIcon icon={faChevronRight} className="ml-3" />
-        </span>
+        </div>
       )}
     </a>
   )

@@ -30,23 +30,40 @@ export default function Classroom({ room, status, endTime }) {
         </div>
       </div>
       {endTime && (
-        <div className={`flex flex-col py-2 font-semibold text-xs items-center justify-center ${inter.className}`}>
+        <div className={`flex flex-col py-4 font-semibold text-xs items-center justify-center ${inter.className}`}>
           {(() => {
             const currentTime = new Date().getTime();
+            const classDurationMillis = 2 * 60 * 60 * 1000; // Example: 2 hours in milliseconds
             const endTimeMillis = endTime.getTime();
+            const startTimeMillis = endTimeMillis - classDurationMillis; // Calculate start time
+            const totalDurationMillis = endTimeMillis - startTimeMillis;
+            const elapsedMillis = currentTime - startTimeMillis;
+
             const diffMillis = endTimeMillis - currentTime;
             if (diffMillis < 0) {
               return "Class has ended. Please refresh";
             }
+
             const diffMinutes = Math.ceil(diffMillis / 1000 / 60);
             const hours = Math.floor(diffMinutes / 60);
             const minutes = diffMinutes % 60;
+
             if (hours > 0) {
-              return `Ends in ${hours} hours and ${minutes} minutes (${endTime.toLocaleString().split(", ")[1].replace(":00", "")})`;
+              return (
+                <div className='flex flex-col items-center justify-center space-y-2'>
+                  <span>Ends in {hours} hours and {minutes} minutes ({endTime.toLocaleString().split(", ")[1].replace(":00", "")})</span>
+                  <progress className="progress w-56" value={elapsedMillis} max={totalDurationMillis}></progress>
+                </div>
+              );
             }
-            return `Ends in ${minutes} minutes (${endTime.toLocaleString().split(", ")[1].replace(":00", "")})`;
+            return (
+              <div className='flex flex-col items-center justify-center space-y-2'>
+                <span>Ends in {minutes} minutes ({endTime.toLocaleString().split(", ")[1].replace(":00", "")})</span>
+                <progress className="progress w-56" value={elapsedMillis} max={totalDurationMillis}></progress>
+              </div>);
           })()}
         </div>
+
       )}
       <div className='flex flex-col cursor-pointer transition gap-2 text-xs'>
         <Transition
