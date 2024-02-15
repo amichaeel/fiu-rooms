@@ -52,18 +52,18 @@ export default function Building({ building }) {
   }, [building]);
 
   return (
-    <a href={`/${building}`} onClick={() => handleBuildingClick(building)} className="text-black h-[100px] group/building grid card bg-neutral-200/60 dark:bg-[#353941] grid-cols-2 gap-2 items-center justify-between p-4 transition cursor-pointer hover:bg-neutral-300 dark:hover:bg-[#4d525d]">
-      <span className="text-slate-900 dark:text-slate-300 text-md justify-self-start">{building}</span>
+    <div onClick={() => handleBuildingClick(building)} className="text-black h-[100px] rounded-md group/building flex flex-row space-x-6 bg-neutral-200/60 dark:bg-[#353941] items-center justify-between p-4 transition cursor-pointer hover:bg-neutral-300 dark:hover:bg-[#4d525d]">
+      <div className="text-slate-900 dark:text-slate-300 text-md">{building}</div>
       {isLoading ? (
         <div className="justify-self-end text-xs">
           <MoonLoader speedMultiplier={0.7} color="rgb(0,0,0)" size={35}  />
         </div>
       ) : (
-        <div className="font-semibold text-xs text-blue-900 dark:text-slate-300 justify-self-end">
+        <div className="font-semibold flex items-center justify-center text-xs text-blue-900 dark:text-slate-300 ">
           <div className="radial-progress" style={{ "--value":(availability[0] / availability[1]) * 100 >> 0, "--size": "4rem" }} role="progressbar">{(availability[0] / availability[1]) * 100 >> 0}%</div>
           <ChevronRightIcon className="ml-3"/>
         </div>
       )}
-    </a>
+    </div>
   )
 }

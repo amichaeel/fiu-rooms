@@ -12,21 +12,17 @@ const inter = Inter({
 export default function Classroom({ room, status, endTime, startTime }) {
   const [moreInfoActive, setMoreInfoActive] = useState(false);
   return (
-    <div className='bg-neutral-200/60 text-black dark:bg-[#353941] dark:text-slate-200 rounded-xl w-full'>
-      <div className='p-2 grid grid-cols-3 w-full max-w-lg'>
-        <div className="col-span-2 w-fit p-2 transition rounded-xl ">
+    <div className='bg-neutral-200/60 text-black dark:bg-[#353941] dark:text-slate-200 rounded-md w-full'>
+      <div className='p-2 flex flex-row items-center justify-between'>
+        <div className="p-2 transition rounded-xl ">
           <div className="font-semibold">{room}</div>
         </div>
-        <div className="justify-self-end">
-          <div className='flex items-center text-xs'>
-            <div>
-              <span className='font-semibold'>{status ? " In Use" : " Open"}</span>
-              <span><FontAwesomeIcon className={`text-xs pl-2 ${status ? 'text-red-600' : 'text-green-600'}`} icon={faCircleDot} /></span>
-              <div onClick={() => setMoreInfoActive(!moreInfoActive)} className="btn btn-sm btn-circle btn-outline ml-2 cursor-pointer w-fit p-2 transition">
-                <FontAwesomeIcon icon={faChevronDown} className={`transition ` + (moreInfoActive ? 'rotate-180' : '')} />
-              </div>
+        <div className='flex flex-row items-center justify-center text-xs'>
+            <div className='font-semibold'>{status ? " In Use" : " Open"}</div>
+            <div><FontAwesomeIcon className={`text-xs pl-2 ${status ? 'text-red-600' : 'text-green-600'}`} icon={faCircleDot} /></div>
+            <div onClick={() => setMoreInfoActive(!moreInfoActive)} className="btn btn-sm btn-circle btn-outline ml-2 cursor-pointer w-fit p-2 transition">
+              <FontAwesomeIcon icon={faChevronDown} className={`transition ` + (moreInfoActive ? 'rotate-180' : '')} />
             </div>
-          </div>
         </div>
       </div>
       {endTime && (
@@ -62,9 +58,9 @@ export default function Classroom({ room, status, endTime, startTime }) {
             return (
               <div className='flex flex-col items-center justify-center'>
                 <div className='flex flex-row justify-between w-full text-[10px] opacity-85'>
-                    <span>{startTime.toLocaleString().split(", ")[1].replace(":00", "")}</span>
-                    <span>{endTime.toLocaleString().split(", ")[1].replace(":00", "")}</span>
-                  </div>
+                  <span>{startTime.toLocaleString().split(", ")[1].replace(":00", "")}</span>
+                  <span>{endTime.toLocaleString().split(", ")[1].replace(":00", "")}</span>
+                </div>
                 <progress className="progress w-56 mb-4" value={elapsedMillis} max={totalDurationMillis}></progress>
                 <span className=''>Ends in {minutes} minutes</span>
               </div>);

@@ -47,7 +47,7 @@ export default function Page() {
         <div className="flex flex-col text-center items-center text-xs p-3">
           Note that if a classroom does not appear here, no class is scheduled for that room.
         </div>
-        <div className="flex flex-col items-center justify-center space-y-2 p-2 max-w-lg w-full" >
+        <div className="flex flex-col gap-2 items-center p-2 w-full max-w-3xl" >
           {isLoading ? (
             <BeatLoader />
           ) : (

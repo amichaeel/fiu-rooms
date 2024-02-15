@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import { useRouter } from "next/router";
 import Building from "@/components/Building";
 import ErrorIcon from '@mui/icons-material/Error';
+import FilterAltIcon from '@mui/icons-material/FilterAlt';
 
 export default function Home() {
   const router = useRouter();
@@ -53,7 +54,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <section className="w-full mt-20">
+      {/* <section className="w-full mt-20">
         <div className="flex md:flex-col items-center justify-center w-full h-16">
           <div className="text-gray-900 flex md:flex-row mx-16 flex-col space-x-2 items-center">
             <span className="font-monumentExtended dark:text-slate-100">find open rooms</span>
@@ -61,15 +62,15 @@ export default function Home() {
             <span className="font-monumentExtended dark:text-slate-100">on campus</span>
           </div>
         </div>
-      </section>
-      <section className="w-full max-w-md items-center justify-center p-2 mt-5">
-        <label className="input input-md dark:bg-[#353941] flex items-center gap-2">
-          <input type="text" className="grow bg-transparent" placeholder="Search by buildings" value={search} onChange={e => setSearch(e.target.value)} />
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg>
+      </section> */}
+      <section className="w-full max-w-md items-center justify-center p-2 mt-20">
+        <label className="input-md rounded-md dark:bg-[#353941] flex items-center gap-2">
+          <input type="text" className="grow !outline-none bg-transparent" placeholder="Filter buildings" value={search} onChange={e => setSearch(e.target.value)} />
+          <FilterAltIcon />
         </label>
         {/* <span className="flex justify-start text-slate-400 text-[9px] uppercase pt-2">Filter by buildings</span> */}
       </section>
-      <section id="buildings" className="max-w-6xl mx-auto grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2 pt-6 px-2">
+      <section id="buildings" className="max-w-6xl w-full grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2 pt-6 px-2">
         {filteredBuildings.length > 0 ? filteredBuildings.map((b, i) => {
           return (
             <Building key={i} building={b} />
