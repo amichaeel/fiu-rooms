@@ -64,7 +64,7 @@ export default function Home() {
         </div>
       </section> */}
       <section className="w-full max-w-md items-center justify-center p-2 mt-20">
-        <label className="input-md rounded-md dark:bg-[#353941] flex items-center gap-2">
+        <label className="input-md rounded-md bg-neutral-200/60  dark:bg-[#353941] flex items-center gap-2">
           <input type="text" className="grow !outline-none bg-transparent" placeholder="Filter buildings" value={search} onChange={e => setSearch(e.target.value)} />
           <FilterAltIcon />
         </label>
