@@ -1,9 +1,5 @@
-import React from "react"
+import React from "react";
 
 export default function Menu() {
-  return (
-    <div className="w-full fixed top-0 h-64 bg-black">
-
-    </div>
-  )
+  return <div className="fixed top-0 h-64 w-full bg-black"></div>;
 }

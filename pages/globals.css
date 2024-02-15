@@ -3,35 +3,36 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
+    --foreground-rgb: 0, 0, 0;
 }
 
 body {
-  --tw-bg-opacity: 1;
-  background: rgb(245, 245, 245);
+    --tw-bg-opacity: 1;
+    background: rgb(245, 245, 245);
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+    .text-balance {
+        text-wrap: balance;
+    }
 }
 
 @media (prefers-color-scheme: dark) {
-  body {
-    background: #26282B
-    
-  }
+    body {
+        background: #26282b;
+    }
 }
 
 @layer base {
-  @font-face {
-    font-family: 'MonumentExtended';
-    src: url(/static/fonts/monument_extended/PPMonumentExtended-Regular.otf) format(woff)
-  }
-  @font-face {
-    font-family: 'MonumentExtended';
-    font-weight: 800; 
-    src: url(/static/fonts/monument_extended/PPMonumentExtended-Black.otf) format(woff)
-  }
+    @font-face {
+        font-family: "MonumentExtended";
+        src: url(/static/fonts/monument_extended/PPMonumentExtended-Regular.otf)
+            format(woff);
+    }
+    @font-face {
+        font-family: "MonumentExtended";
+        font-weight: 800;
+        src: url(/static/fonts/monument_extended/PPMonumentExtended-Black.otf)
+            format(woff);
+    }
 }

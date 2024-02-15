@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { useRouter } from "next/router";
 import Building from "@/components/Building";
-import ErrorIcon from '@mui/icons-material/Error';
-import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import ErrorIcon from "@mui/icons-material/Error";
+import FilterAltIcon from "@mui/icons-material/FilterAlt";
 
 export default function Home() {
-  const router = useRouter();
-
   const buildings = [
     "Academic Health Center 2",
     "Academic Health Center 3",
@@ -40,20 +36,21 @@ export default function Home() {
     "West 1",
     "West 9",
     "West 10",
-    "Wertheim Prf Arts Ctr"].sort();
+    "Wertheim Prf Arts Ctr",
+  ].sort();
 
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const [filteredBuildings, setFilteredBuildings] = useState(buildings);
 
   useEffect(() => {
-    const filtered = buildings.filter(building =>
-      building.toLowerCase().includes(search.toLowerCase())
+    const filtered = buildings.filter((building) =>
+      building.toLowerCase().includes(search.toLowerCase()),
     );
     setFilteredBuildings(filtered);
   }, [search]);
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col items-center justify-center">
       {/* <section className="w-full mt-20">
         <div className="flex md:flex-col items-center justify-center w-full h-16">
           <div className="text-gray-900 flex md:flex-row mx-16 flex-col space-x-2 items-center">
@@ -63,25 +60,34 @@ export default function Home() {
           </div>
         </div>
       </section> */}
-      <section className="w-full max-w-md items-center justify-center p-2 mt-20">
-        <label className="input-md rounded-md bg-neutral-200/60  dark:bg-[#353941] flex items-center gap-2">
-          <input type="text" className="grow !outline-none bg-transparent" placeholder="Filter buildings" value={search} onChange={e => setSearch(e.target.value)} />
+      <section className="mt-20 w-full max-w-md items-center justify-center p-2">
+        <label className="input-md flex items-center  gap-2 rounded-md bg-neutral-200/60 dark:bg-[#353941]">
+          <input
+            type="text"
+            className="grow bg-transparent !outline-none"
+            placeholder="Filter buildings"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
           <FilterAltIcon />
         </label>
         {/* <span className="flex justify-start text-slate-400 text-[9px] uppercase pt-2">Filter by buildings</span> */}
       </section>
-      <section id="buildings" className="max-w-6xl w-full grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2 pt-6 px-2">
-        {filteredBuildings.length > 0 ? filteredBuildings.map((b, i) => {
-          return (
-            <Building key={i} building={b} />
-          )
-        }) : (
-          <div className="text-sm flex items-center space-x-2 justify-center uppercase opacity-60 col-span-full">
+      <section
+        id="buildings"
+        className="grid w-full max-w-6xl grid-cols-1 gap-2 px-2 pt-6 md:grid-cols-2 lg:grid-cols-3"
+      >
+        {filteredBuildings.length > 0 ? (
+          filteredBuildings.map((b, i) => {
+            return <Building key={i} building={b} />;
+          })
+        ) : (
+          <div className="col-span-full flex items-center justify-center space-x-2 text-sm uppercase opacity-60">
             <ErrorIcon />
             <span>No buildings found</span>
           </div>
         )}
       </section>
     </div>
-  )
+  );
 }
