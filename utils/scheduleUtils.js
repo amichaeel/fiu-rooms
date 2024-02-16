@@ -78,10 +78,16 @@ export function findNextClass(roomSchedule, currentTime) {
   // Find the next class
   for (let classSchedule of parsedSchedule) {
     for (let day of classSchedule.days) {
-      const dayOffset = (day + 7 - currentTime.getDay()) % 7;
+      const dayOffset = day - currentTime.getDay();
       const classStartTime = timeToDate(classSchedule.startTime, dayOffset);
 
-      if (classStartTime > currentTime) {
+      // Check if the class is on the same day and after the current time
+      if (dayOffset === 0 && classStartTime > currentTime) {
+        return classStartTime;
+      }
+
+      // Check if the class is on a future day
+      if (dayOffset > 0) {
         return classStartTime;
       }
     }
