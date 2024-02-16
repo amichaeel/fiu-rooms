@@ -35,6 +35,7 @@ export default function Page() {
         console.error("Error fetching data:", error);
       } finally {
         setIsLoading(false);
+        console.log(allRoomsStatus);
       }
     };
     load();
@@ -60,6 +61,7 @@ export default function Page() {
                 status={status[0]}
                 endTime={status[1]}
                 startTime={status[2]}
+                nextStart={status[3]}
                 key={index}
               />
             ))

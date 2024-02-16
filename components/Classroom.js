@@ -9,13 +9,20 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Transition } from "@headlessui/react";
 import { Inter } from "next/font/google";
+import EventIcon from "@mui/icons-material/Event";
 
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
 });
 
-export default function Classroom({ room, status, endTime, startTime }) {
+export default function Classroom({
+  room,
+  status,
+  endTime,
+  startTime,
+  nextStart,
+}) {
   const [moreInfoActive, setMoreInfoActive] = useState(false);
   return (
     <div className="w-full rounded-md bg-neutral-200/60 text-black dark:bg-[#353941] dark:text-slate-200">
@@ -42,7 +49,7 @@ export default function Classroom({ room, status, endTime, startTime }) {
           </div>
         </div>
       </div>
-      {endTime && (
+      {status ? (
         <div
           className={`flex flex-col items-center justify-center py-4 text-xs font-semibold ${inter.className}`}
         >
@@ -112,6 +119,21 @@ export default function Classroom({ room, status, endTime, startTime }) {
               </div>
             );
           })()}
+        </div>
+      ) : (
+        <div className="flex flex-col items-center p-4">
+          <span className="flex text-[10px] uppercase opacity-50">
+            Next class starts on:
+          </span>
+          <span className="flex flex-row items-center justify-center space-x-2 text-sm opacity-70">
+            <EventIcon fontSize="small" />
+            <div>
+              {nextStart.toLocaleString("en-US", {
+                dateStyle: "full",
+                timeStyle: "short",
+              })}
+            </div>
+          </span>
         </div>
       )}
       <div className="flex cursor-pointer flex-col gap-2 text-xs transition">
