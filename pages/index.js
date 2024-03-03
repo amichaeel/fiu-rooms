@@ -75,7 +75,7 @@ export default function Home() {
         </label>
         {/* <span className="flex justify-start text-slate-400 text-[9px] uppercase pt-2">Filter by buildings</span> */}
       </section>
-      <div className={"w-full max-w-6xl " + (achknowledge && " hidden")}>
+      {/* <div className={"w-full max-w-6xl " + (achknowledge && " hidden")}>
         <div role="alert" className="alert">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-info shrink-0 w-6 h-6 "><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
           <span>FIU is on spring break from Feb 26 - Mar 1. No classes will be in session, therefore data displayed on this site will be innacurate.</span>
@@ -83,7 +83,7 @@ export default function Home() {
             <button onClick={() => setAchknowledge(true)} className="btn btn-sm btn-primary">Got it!</button>
           </div>
         </div>
-      </div>
+      </div> */}
       <section
         id="buildings"
         className="grid w-full max-w-6xl grid-cols-1 gap-2 px-2 pt-6 md:grid-cols-2 lg:grid-cols-3"
