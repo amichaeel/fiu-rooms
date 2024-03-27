@@ -11,7 +11,7 @@ Welcome to FIU Rooms, the intuitive platform designed specifically for students 
 
 ## Getting Started
 
-To start using FIU Rooms, simply visit [fiu-rooms.vercel.app](https://fiu-rooms.vercel.app from your preferred web browser. No sign-up or login required—finding an empty classroom is just a few clicks away!
+To start using FIU Rooms, simply visit [fiu-rooms.vercel.app](https://fiu-rooms.vercel.app) from your preferred web browser. No sign-up or login required—finding an empty classroom is just a few clicks away!
 
 ## How to Use
 
