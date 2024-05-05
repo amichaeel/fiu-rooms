@@ -15,12 +15,12 @@ export default function Home() {
     "College of Business Complex",
     "Chem & Physics",
     "Deuxieme Maison",
-    "Everglades Residence Hall",
+    // "Everglades Residence Hall",
     "Engineering Center",
     "Patricia&PhilipFrostMuseum",
     "Graham Center",
     "Green Library",
-    "Labor Center",
+    // "Labor Center",
     "Mgmt and New Growth Opp",
     "Mgmt & Advanced Resrch Ctr",
     "Ocean Bank Convoc Center",
@@ -36,7 +36,7 @@ export default function Home() {
     "West 1",
     "West 9",
     "West 10",
-    "Wertheim Prf Arts Ctr",
+    // "Wertheim Prf Arts Ctr",
   ].sort();
 
   const [search, setSearch] = useState("");
@@ -78,13 +78,13 @@ export default function Home() {
       <div className={"w-full p-6 max-w-6xl " + (achknowledge && " hidden")}>
         <div role="alert" className="alert">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-info shrink-0 w-6 h-6 "><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          <span>FIU Rooms is currently being updated with the Summer 2024 class schedule. Check back soon!</span>
-          {/* <div>
+          <span>FIU Rooms has been updated with the summer 2024 schedule!</span>
+          <div>
             <button onClick={() => setAchknowledge(true)} className="btn btn-sm btn-primary">Got it!</button>
-          </div> */}
+          </div>
         </div>
       </div>
-      {/* <section
+      <section
         id="buildings"
         className="grid w-full max-w-6xl grid-cols-1 gap-2 px-2 pt-6 md:grid-cols-2 lg:grid-cols-3"
       >
@@ -99,7 +99,7 @@ export default function Home() {
             <span>No buildings found</span>
           </div>
         )}
-      </section> */}
+      </section>
     </div>
   );
 }
