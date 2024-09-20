@@ -15,7 +15,7 @@ export default function Navbar() {
       <div className="navbar fixed z-50 text-slate-700 backdrop-blur-lg dark:text-slate-100">
         <div className="navbar-start">
           <div className="dropdown">
-            <div
+            {/* <div
               tabIndex={0}
               role="button"
               className="btn btn-ghost btn-circle"
@@ -34,7 +34,7 @@ export default function Navbar() {
                   d="M4 6h16M4 12h16M4 18h7"
                 />
               </svg>
-            </div>
+            </div> */}
             {/* <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
               <li><Link href="/">Homepage</Link></li>
               <li><Link href="https://www.github.com/amichaeel">Github</Link></li>
