@@ -35,11 +35,10 @@ export default function Page() {
         console.error("Error fetching data:", error);
       } finally {
         setIsLoading(false);
-        console.log(allRoomsStatus);
       }
     };
     load();
-  }, [router.isReady, router.query.building]);
+  }, [router.isReady, router.query.building, allRoomsStatus]);
 
   return (
     <div>

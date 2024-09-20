@@ -38,7 +38,7 @@ export default function Classroom({
               icon={faCircleDot}
             />
           </div>
-          <div
+          {/* <div
             onClick={() => setMoreInfoActive(!moreInfoActive)}
             className="btn btn-sm btn-circle btn-outline ml-2 w-fit cursor-pointer p-2 transition"
           >
@@ -46,7 +46,7 @@ export default function Classroom({
               icon={faChevronDown}
               className={`transition ` + (moreInfoActive ? "rotate-180" : "")}
             />
-          </div>
+          </div> */}
         </div>
       </div>
       {status ? (
@@ -136,7 +136,7 @@ export default function Classroom({
           </span>
         </div>
       )}
-      <div className="flex cursor-pointer flex-col gap-2 text-xs transition">
+      {/* <div className="flex cursor-pointer flex-col gap-2 text-xs transition">
         <Transition
           show={moreInfoActive}
           enter="transition ease-out duration-300"
@@ -157,7 +157,7 @@ export default function Classroom({
             <span>Max Copacity: 34</span>
           </div>
         </Transition>
-      </div>
+      </div> */}
     </div>
   );
 }
