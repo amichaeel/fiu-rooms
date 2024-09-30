@@ -75,31 +75,41 @@ export function findNextClass(roomSchedule, currentTime) {
     return date;
   };
 
+  let nextClass = null;
+
   // Find the next class
   for (let classSchedule of parsedSchedule) {
     for (let day of classSchedule.days) {
       const dayOffset = day - currentTime.getDay();
       const classStartTime = timeToDate(classSchedule.startTime, dayOffset);
 
-      // Check if the class is on the same day and after the current time
+      // Handle class on the same day but later in the day
       if (dayOffset === 0 && classStartTime > currentTime) {
+        // Class later today, return this class
         return classStartTime;
       }
 
-      // Check if the class is on a future day
+      // Handle future classes
       if (dayOffset > 0) {
-        return classStartTime;
+        if (!nextClass || classStartTime < nextClass) {
+          nextClass = classStartTime; // Future class is earlier than current next
+        }
       }
     }
   }
 
-  // If no class is found for the current week, return the start time of the first class of the next week
-  const firstClassNextWeek = parsedSchedule[0];
-  return timeToDate(
-    firstClassNextWeek.startTime,
-    (firstClassNextWeek.days[0] + 7 - currentTime.getDay()) % 7,
-  );
+  // If no class is found for the current day or future, return the first class of the next week
+  if (!nextClass) {
+    const firstClassNextWeek = parsedSchedule[0];
+    return timeToDate(
+      firstClassNextWeek.startTime,
+      (firstClassNextWeek.days[0] + 7 - currentTime.getDay()) % 7
+    );
+  }
+
+  return nextClass;
 }
+
 
 export function isTimeInRange(scheduleTime, currentTime) {
   const [startTime, endTime] = scheduleTime.split("-");
