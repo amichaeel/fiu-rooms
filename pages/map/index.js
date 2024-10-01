@@ -28,7 +28,6 @@ const CampusMap = () => {
     name: "campus-map",
     areas: [
       { name: "PG6", title: "Parking Garage 6", shape: "poly", coords: [1391, 182, 1388, 303, 1532, 308, 1535, 187], preFillColor: "#00000050" },
-      { name: "PG4", title: "PG4", shape: "poly", coords: [1587, 204, 1582, 301, 1721, 303, 1724, 204], preFillColor: "#00000050" },
       { name: "PG5", title: "PG5 Market Station", shape: "poly", coords: [1784, 195, 1780, 322, 1931, 322, 1931, 198], preFillColor: "#00000050" },
       { name: "AH5", title: "Academic Health Center 5", shape: "poly", coords: [1854, 374, 1968, 376, 1964, 461, 1935, 449, 1906, 430, 1890, 417, 1871, 403], preFillColor: "#00000050" },
       { name: "AH4", title: "Academic Health Center 4", shape: "poly", coords: [1703, 368, 1703, 407, 1840, 407, 1840, 372], preFillColor: "#00000050" },
@@ -66,12 +65,12 @@ const CampusMap = () => {
   };
 
   return (
-    <div className='flex flex-col items-center justify-center w-full'>
+    <div className='flex flex-col items-center justify-center w-full cursor'>
       <div className='mt-20 flex flex-col items-center'>
         <span className='font-monumentExtended text-xl'>Campus Map</span>
         <span className='text-center text-sm'>To use this map, simply click on the building you would like to see the availability of. Buildings with no shading are not supported.</span>
       </div>
-      <div className='h-auto mt-10 w-full max-w-[1500px] border-white' ref={containerRef}>
+      <div className='h-auto mt-10 w-full max-w-[1500px]' ref={containerRef}>
         <ImageMapper
           src="/images/mmc.png"
           map={MAP}

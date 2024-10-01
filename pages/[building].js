@@ -4,12 +4,19 @@ import { isRoomInUse, transformClassesToSchedule } from "@/utils/scheduleUtils";
 import { useRouter } from "next/router";
 import { BeatLoader } from "react-spinners";
 import { buildings } from "@/utils/buildings";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+
 
 export default function Page() {
   const [allRoomsStatus, setAllRoomsStatus] = useState({});
   const [notFound, setNotFound] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
+
+  const googleMapsUrl = `https://www.google.com/maps/search/${encodeURIComponent(
+    router.query.building
+  )}`;
 
   useEffect(() => {
     const load = async () => {
@@ -55,6 +62,14 @@ export default function Page() {
           <div className="w-full max-w-3xl">
             <div className="font-monumentExtended mx-2 text-center text-xl">
               {router.query.building}
+              <a
+                href={googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline ml-2 bg-base-100 hover:bg-base-300 transition-all px-3 py-1 rounded-xl"
+              >
+                <FontAwesomeIcon className="" icon={faMapMarkerAlt} />
+              </a>
             </div>
             <div className="flex flex-col items-center p-3 text-center text-xs">
               Note that if a classroom does not appear here, no class is scheduled
