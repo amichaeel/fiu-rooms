@@ -63,7 +63,7 @@ export default function Building({ building }) {
       </div>
       {isLoading ? (
         <div className="justify-self-end text-xs">
-          <MoonLoader speedMultiplier={0.7} color="rgb(0,0,0)" size={35} />
+          <MoonLoader className="mr-10 dark:invert" speedMultiplier={0.7} color="rgb(0,0,0)" size={45} />
         </div>
       ) : (
         <div className="flex items-center justify-center text-xs font-semibold text-blue-900 dark:text-slate-300 ">

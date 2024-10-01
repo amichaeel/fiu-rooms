@@ -3,9 +3,11 @@ import Classroom from "@/components/Classroom";
 import { isRoomInUse, transformClassesToSchedule } from "@/utils/scheduleUtils";
 import { useRouter } from "next/router";
 import { BeatLoader } from "react-spinners";
+import { buildings } from "@/utils/buildings";
 
 export default function Page() {
   const [allRoomsStatus, setAllRoomsStatus] = useState({});
+  const [notFound, setNotFound] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
@@ -16,6 +18,10 @@ export default function Page() {
           return;
         }
         const building = router.query.building;
+        if (!buildings.includes(building)) {
+          setNotFound(true);
+          return;
+        }
         const uri = `/api/building?building=${building}`;
         const response = await fetch(uri);
         const data = await response.json();
@@ -41,33 +47,41 @@ export default function Page() {
   }, [router.isReady, router.query.building, allRoomsStatus]);
 
   return (
-    <div>
-      <div className="mt-20 flex flex-col items-center justify-center space-y-2">
-        <div className="font-monumentExtended mx-2 text-center text-xl">
-          {router.query.building}
-        </div>
-        <div className="flex flex-col items-center p-3 text-center text-xs">
-          Note that if a classroom does not appear here, no class is scheduled
-          for that room.
-        </div>
-        <div className="flex w-full max-w-3xl flex-col items-center gap-2 p-2">
-          {isLoading ? (
-            <BeatLoader />
-          ) : Object.keys(allRoomsStatus).length > 0 ? (
-            Object.entries(allRoomsStatus).map(([room, status], index) => (
-              <Classroom
-                room={room}
-                status={status[0]}
-                endTime={status[1]}
-                startTime={status[2]}
-                nextStart={status[3]}
-                key={index}
-              />
-            ))
-          ) : (
-            <div>No data found</div>
-          )}
-        </div>
+    <div className="">
+      <div className="mt-20 w=full flex flex-col items-center justify-center space-y-2">
+        {notFound ? (
+          <div>Building not found.</div>
+        ) : (
+          <div className="w-full max-w-3xl">
+            <div className="font-monumentExtended mx-2 text-center text-xl">
+              {router.query.building}
+            </div>
+            <div className="flex flex-col items-center p-3 text-center text-xs">
+              Note that if a classroom does not appear here, no class is scheduled
+              for that room.
+            </div>
+            <div className="flex w-full max-w-6xl flex-col items-center gap-2 p-2">
+              {isLoading ? (
+                <BeatLoader className="dark:invert" />
+              ) : Object.keys(allRoomsStatus).length > 0 ? (
+                Object.entries(allRoomsStatus)
+                  .sort(([roomA], [roomB]) => roomA.localeCompare(roomB))
+                  .map(([room, status], index) => (
+                    <Classroom
+                      room={room}
+                      status={status[0]}
+                      endTime={status[1]}
+                      startTime={status[2]}
+                      nextStart={status[3]}
+                      key={index}
+                    />
+                  ))
+              ) : (
+                <div>No data found</div>
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
