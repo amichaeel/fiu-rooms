@@ -18,15 +18,6 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      {/* <section className="w-full mt-20">
-        <div className="flex md:flex-col items-center justify-center w-full h-16">
-          <div className="text-gray-900 flex md:flex-row mx-16 flex-col space-x-2 items-center">
-            <span className="font-monumentExtended dark:text-slate-100">find open rooms</span>
-            <span className="font-monumentExtended text-[rgb(182,134,44)]"> anywhere </span>
-            <span className="font-monumentExtended dark:text-slate-100">on campus</span>
-          </div>
-        </div>
-      </section> */}
       <section className="mt-20 w-full max-w-md items-center justify-center p-2">
 
         <label className="input-md flex items-center  gap-2 rounded-md bg-neutral-200/60 dark:bg-[#353941]">

@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import Link from "next/link";
 import EmailIcon from "@mui/icons-material/Email";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import MapIcon from '@mui/icons-material/Map';
 
 const inter = Inter({
   subsets: ["latin"],
@@ -50,6 +51,16 @@ export default function Navbar() {
           </Link>
         </div>
         <div className="navbar-end">
+          <div className="relative inline-block">
+            <button className="btn btn-ghost btn-circle">
+              <Link href="/map">
+                <MapIcon />
+              </Link>
+            </button>
+            <span className="absolute top-0 right-0 transform bg-red-500 text-white text-[8px] font-bold rounded-full px-1">
+              New!
+            </span>
+          </div>
           <button className="btn btn-ghost btn-circle">
             <Link href="https://www.github.com/amichaeel/fiu-rooms">
               <GitHubIcon />
@@ -61,6 +72,7 @@ export default function Navbar() {
             </Link>
           </button>
         </div>
+
       </div>
     </>
   );

@@ -11,11 +11,14 @@ export const buildings = [
   "Everglades Residence Hall",
   "Engineering Center",
   "Patricia&PhilipFrostMuseum",
+  "Rafael Diaz-Balart",
   "Graham Center",
   "Green Library",
   "Labor Center",
   "Mgmt and New Growth Opp",
   "Mgmt & Advanced Resrch Ctr",
+  "Student Athletic Academic Ctr",
+  "Student Acad Success Cntr",
   "Ocean Bank Convoc Center",
   "Owa Ehan",
   "Paul Cejas Architecture",
@@ -30,4 +33,5 @@ export const buildings = [
   "West 9",
   "West 10",
   "Wertheim Prf Arts Ctr",
+  "Ziff Education Bldg"
 ].sort();

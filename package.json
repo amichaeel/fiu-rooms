@@ -20,10 +20,12 @@
     "@mui/icons-material": "^5.15.10",
     "@mui/material": "^5.15.10",
     "@vercel/analytics": "^1.1.2",
+    "image-map-resizer": "^1.0.10",
     "mongoose": "^8.1.0",
-    "next": "14.1.0",
+    "next": "^14.2.13",
     "react": "^18",
     "react-dom": "^18",
+    "react-img-mapper": "^1.5.1",
     "react-spinners": "^0.13.8"
   },
   "devDependencies": {

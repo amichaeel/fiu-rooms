@@ -44,7 +44,7 @@ export default function Page() {
       }
     };
     load();
-  }, [router.isReady, router.query.building, allRoomsStatus]);
+  }, [router.isReady, router.query.building]);
 
   return (
     <div className="">
