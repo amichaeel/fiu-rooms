@@ -15,6 +15,16 @@ export default function Navbar() {
     <>
       <div className="navbar fixed z-50 text-slate-700 backdrop-blur-lg dark:text-slate-100">
         <div className="navbar-start">
+          <div className="relative inline-block">
+            <button className="btn btn-ghost btn-circle">
+              <Link href="/map">
+                <MapIcon />
+              </Link>
+            </button>
+            <span className="absolute top-0 right-0 transform bg-red-500 text-white text-[8px] font-bold rounded-full px-1">
+              New!
+            </span>
+          </div>
           <div className="dropdown">
             {/* <div
               tabIndex={0}
@@ -51,16 +61,6 @@ export default function Navbar() {
           </Link>
         </div>
         <div className="navbar-end">
-          <div className="relative inline-block">
-            <button className="btn btn-ghost btn-circle">
-              <Link href="/map">
-                <MapIcon />
-              </Link>
-            </button>
-            <span className="absolute top-0 right-0 transform bg-red-500 text-white text-[8px] font-bold rounded-full px-1">
-              New!
-            </span>
-          </div>
           <button className="btn btn-ghost btn-circle">
             <Link href="https://www.github.com/amichaeel/fiu-rooms">
               <GitHubIcon />
