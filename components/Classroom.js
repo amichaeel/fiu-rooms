@@ -38,7 +38,7 @@ export default function Classroom({
             {room}
           </div>
         </div>
-        <div className="flex flex-row items-center justify-center text-xs bg-base-100 p-3 rounded-xl">
+        <div className="flex flex-row items-center justify-center text-xs bg-base-100/30 p-3 rounded-xl">
           <div className="font-semibold">
             {status ? " In Use" : isClosingSoon(nextStart) ? (
               "Closing Soon"

@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import Link from "next/link";
 import EmailIcon from "@mui/icons-material/Email";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import { CoffeeOutlined, CoffeeRounded, CoffeeSharp } from "@mui/icons-material";
 import MapIcon from '@mui/icons-material/Map';
 
 const inter = Inter({
@@ -15,6 +16,11 @@ export default function Navbar() {
     <>
       <div className="navbar fixed z-50 text-slate-700 backdrop-blur-lg dark:text-slate-100">
         <div className="navbar-start">
+          <button className="btn btn-ghost btn-circle">
+            <Link href="https://buymeacoffee.com/anthonyham">
+              <CoffeeRounded />
+            </Link>
+          </button>
           <div className="relative inline-block">
             <button className="btn btn-ghost btn-circle">
               <Link href="/map">
@@ -52,10 +58,11 @@ export default function Navbar() {
             </ul> */}
           </div>
         </div>
+
         <div className="navbar-center">
           <Link className="btn btn-ghost" href="/">
             <div className="relative flex flex-col items-center justify-center">
-              <span className="font-monumentExtended text-xl">FIU ROOMS</span>
+              <span className="font-monumentExtended text-lg">FIU ROOMS</span>
               <span className="text-[10px] font-light">BETA</span>
             </div>
           </Link>
