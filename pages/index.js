@@ -45,7 +45,7 @@ export default function Home() {
       <div className={"w-full p-6 max-w-6xl " + (achknowledge && " hidden")}>
         <div role="alert" className="alert flex justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-info shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          <span>FIU will close on Tuesday, October 8th at 5pm and reopen on Thursday, October 10th, due to Hurricane Milton.</span>
+          <span>FIU will close on Tuesday, October 8th at 5pm and reopen on Friday, October 11th, due to Hurricane Milton.</span>
           <div>
             <button onClick={() => handleAchknowledge()} className="btn btn-sm btn-primary">Got it!</button>
           </div>
