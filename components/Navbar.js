@@ -82,16 +82,18 @@ export default function Navbar() {
           </button>
         </div>
       </div>
-      <div className="mt-16 w-full p-4 text-white bg-red-900 flex flex-wrap items-center justify-center">
-        <span>
-          <FontAwesomeIcon className="mr-2" icon={faHurricane} />
-          CLICK
-        </span>
-        <Link href="https://www.nhc.noaa.gov/refresh/graphics_at4+shtml/213144.shtml?cone#contents" className="mx-1 link">
-          HERE
-        </Link>
-        <span>FOR LIVE UDPATES ON HURRICANE MILTON. STAY SAFE</span>
-        <FontAwesomeIcon className="ml-2" icon={faHurricane} />
+      <div className="mt-16 w-full p-4 text-white text-center flex-col md:flex-row bg-red-900 flex flex-wrap items-center justify-center">
+        <FontAwesomeIcon className="p-2" icon={faHurricane} />
+        <div>
+          <span>
+            CLICK
+          </span>
+          <Link href="https://www.nhc.noaa.gov/refresh/graphics_at4+shtml/213144.shtml?cone#contents" className="mx-1 link">
+            HERE
+          </Link>
+          <span>FOR LIVE UDPATES ON HURRICANE MILTON. STAY SAFE</span>
+        </div>
+        <FontAwesomeIcon className="p-2" icon={faHurricane} />
       </div>
     </>
   );
