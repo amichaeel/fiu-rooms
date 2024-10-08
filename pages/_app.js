@@ -6,12 +6,17 @@ import { config } from '@fortawesome/fontawesome-svg-core';
 config.autoAddCss = false;
 import Head from "next/head";
 import { Analytics } from "@vercel/analytics/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHurricane } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
 export default function MyApp({ Component, pageProps }) {
   return (
     <>
       <div className="flex min-h-screen flex-col justify-between">
+
         <Head>
+
           <title>FIU Rooms</title>
           <link rel="shortcut icon" href="/images/favicon.ico" />
           <link
@@ -35,6 +40,7 @@ export default function MyApp({ Component, pageProps }) {
         <div>
           <Navbar />
           <Component {...pageProps} />
+
         </div>
         <Analytics />
         <Footer />

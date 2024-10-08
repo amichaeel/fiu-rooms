@@ -1,10 +1,12 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import { Inter } from "next/font/google";
 import Link from "next/link";
 import EmailIcon from "@mui/icons-material/Email";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import { CoffeeOutlined, CoffeeRounded, CoffeeSharp } from "@mui/icons-material";
+import { CoffeeRounded } from "@mui/icons-material";
 import MapIcon from '@mui/icons-material/Map';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHurricane } from "@fortawesome/free-solid-svg-icons";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -79,7 +81,17 @@ export default function Navbar() {
             </Link>
           </button>
         </div>
-
+      </div>
+      <div className="mt-16 w-full p-4 text-white bg-red-900 flex flex-wrap items-center justify-center">
+        <span>
+          <FontAwesomeIcon className="mr-2" icon={faHurricane} />
+          CLICK
+        </span>
+        <Link href="https://www.nhc.noaa.gov/refresh/graphics_at4+shtml/213144.shtml?cone#contents" className="mx-1 link">
+          HERE
+        </Link>
+        <span>FOR LIVE UDPATES ON HURRICANE MILTON. STAY SAFE</span>
+        <FontAwesomeIcon className="ml-2" icon={faHurricane} />
       </div>
     </>
   );
