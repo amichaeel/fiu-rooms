@@ -4,7 +4,7 @@ import Link from "next/link";
 import EmailIcon from "@mui/icons-material/Email";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { CoffeeRounded } from "@mui/icons-material";
-import MapIcon from '@mui/icons-material/Map';
+import MapIcon from "@mui/icons-material/Map";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHurricane } from "@fortawesome/free-solid-svg-icons";
 
@@ -81,19 +81,6 @@ export default function Navbar() {
             </Link>
           </button>
         </div>
-      </div>
-      <div className="mt-16 w-full p-4 text-white text-center flex-col md:flex-row bg-red-900 flex flex-wrap items-center justify-center">
-        <FontAwesomeIcon className="p-2" icon={faHurricane} />
-        <div>
-          <span>
-            CLICK
-          </span>
-          <Link href="https://www.nhc.noaa.gov/refresh/graphics_at4+shtml/213144.shtml?cone#contents" className="mx-1 link">
-            HERE
-          </Link>
-          <span>FOR LIVE UDPATES ON HURRICANE MILTON. STAY SAFE</span>
-        </div>
-        <FontAwesomeIcon className="p-2" icon={faHurricane} />
       </div>
     </>
   );
