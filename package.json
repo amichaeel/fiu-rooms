@@ -21,6 +21,7 @@
     "@mui/material": "^5.15.10",
     "@vercel/analytics": "^1.1.2",
     "image-map-resizer": "^1.0.10",
+    "mapbox-gl": "^3.7.0",
     "mongoose": "^8.1.0",
     "next": "^14.2.13",
     "react": "^18",

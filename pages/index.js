@@ -31,7 +31,7 @@ export default function Home() {
     <div className="flex flex-col items-center justify-center">
       <section className="mt-20 w-full max-w-md items-center justify-center p-2">
 
-        <label className="input-md flex items-center  gap-2 rounded-md bg-neutral-200/60 dark:bg-[#353941]">
+        {/* <label className="input-md flex items-center  gap-2 rounded-md bg-neutral-200/60 dark:bg-[#353941]">
           <input
             type="text"
             className="grow bg-transparent !outline-none"
@@ -40,9 +40,14 @@ export default function Home() {
             onChange={(e) => setSearch(e.target.value)}
           />
           <FilterAltIcon />
-        </label>
+        </label> */}
       </section>
-      <div className={"w-full p-6 max-w-6xl " + (achknowledge && " hidden")}>
+      <section className="p-4 text-center w-full items-center flex justify-center">
+        <span className="text-md">
+          FIU Rooms is currently being updated for the Spring 2025 semester. We will be back soon!
+        </span>
+      </section>
+      {/* <div className={"w-full p-6 max-w-6xl " + (achknowledge && " hidden")}>
         <div role="alert" className="alert flex justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-info shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
           <span>FIU will close on Tuesday, October 8th at 5pm and reopen on Friday, October 11th, due to Hurricane Milton.</span>
@@ -50,8 +55,9 @@ export default function Home() {
             <button onClick={() => handleAchknowledge()} className="btn btn-sm btn-primary">Got it!</button>
           </div>
         </div>
-      </div>
-      <section
+      </div> */}
+
+      {/* <section
         id="buildings"
         className="grid w-full max-w-6xl grid-cols-1 gap-2 px-2 pt-6 md:grid-cols-2 lg:grid-cols-3"
       >
@@ -66,7 +72,7 @@ export default function Home() {
             <span>No buildings found</span>
           </div>
         )}
-      </section>
+      </section> */}
     </div>
   );
 }

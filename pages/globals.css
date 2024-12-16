@@ -26,13 +26,12 @@ body {
 @layer base {
     @font-face {
         font-family: "MonumentExtended";
-        src: url(/static/fonts/monument_extended/PPMonumentExtended-Regular.otf)
-            format(woff);
+        src: url(/static/fonts/monument_extended/PPMonumentExtended-Regular.otf) format(woff);
     }
+
     @font-face {
         font-family: "MonumentExtended";
         font-weight: 800;
-        src: url(/static/fonts/monument_extended/PPMonumentExtended-Black.otf)
-            format(woff);
+        src: url(/static/fonts/monument_extended/PPMonumentExtended-Black.otf) format(woff);
     }
 }
