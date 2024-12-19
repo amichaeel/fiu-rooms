@@ -3,6 +3,10 @@ import Building from "@/components/Building";
 import ErrorIcon from "@mui/icons-material/Error";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import { buildings } from "@/utils/buildings";
+import Garage from "@/components/Garage";
+import { Clock } from "lucide-react";
+import { MarginTwoTone } from "@mui/icons-material";
+import MaintenancePage from "@/components/Maintenance";
 
 export default function Home() {
   const [search, setSearch] = useState("");
@@ -10,13 +14,13 @@ export default function Home() {
   const [achknowledge, setAchknowledge] = useState(false);
 
   const handleAchknowledge = () => {
-    localStorage.setItem("milton", true)
-    setAchknowledge(true)
-  }
+    localStorage.setItem("milton", true);
+    setAchknowledge(true);
+  };
 
   useEffect(() => {
     const filtered = buildings.filter((building) =>
-      building.toLowerCase().includes(search.toLowerCase()),
+      building.toLowerCase().includes(search.toLowerCase())
     );
     setFilteredBuildings(filtered);
   }, [search]);
@@ -25,54 +29,41 @@ export default function Home() {
     if (localStorage.getItem("milton", true)) {
       setAchknowledge(true);
     }
-  }, [])
+  }, []);
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <section className="mt-20 w-full max-w-md items-center justify-center p-2">
 
-        {/* <label className="input-md flex items-center  gap-2 rounded-md bg-neutral-200/60 dark:bg-[#353941]">
+
+      <section className="md:mt-20 mt-28 w-full max-w-md items-center justify-center p-2">
+
+        <MaintenancePage />
+        {/* <label className="input flex items-center gap-2 rounded-md bg-base-content/5">
           <input
             type="text"
-            className="grow bg-transparent !outline-none"
+            className="grow bg-transparent !outline-none placeholder-base-content/60"
             placeholder="Filter buildings"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
-          <FilterAltIcon />
-        </label> */}
+          <FilterAltIcon className="text-base-content/60" />
+        </label>
       </section>
-      <section className="p-4 text-center w-full items-center flex justify-center">
-        <span className="text-md">
-          FIU Rooms is currently being updated for the Spring 2025 semester. We will be back soon!
-        </span>
-      </section>
-      {/* <div className={"w-full p-6 max-w-6xl " + (achknowledge && " hidden")}>
-        <div role="alert" className="alert flex justify-center">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-info shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          <span>FIU will close on Tuesday, October 8th at 5pm and reopen on Friday, October 11th, due to Hurricane Milton.</span>
-          <div>
-            <button onClick={() => handleAchknowledge()} className="btn btn-sm btn-primary">Got it!</button>
-          </div>
-        </div>
-      </div> */}
-
-      {/* <section
+      <section
         id="buildings"
-        className="grid w-full max-w-6xl grid-cols-1 gap-2 px-2 pt-6 md:grid-cols-2 lg:grid-cols-3"
+        className="grid w-full max-w-screen-xl grid-cols-1 gap-3 px-2 pt-6 md:grid-cols-2 lg:grid-cols-3"
       >
-
         {filteredBuildings.length > 0 ? (
           filteredBuildings.map((b, i) => {
             return <Building key={i} building={b} />;
           })
         ) : (
-          <div className="col-span-full flex items-center justify-center space-x-2 text-sm uppercase opacity-60">
+          <div className="col-span-full flex items-center justify-center space-x-2 text-sm uppercase text-base-content/60">
             <ErrorIcon />
             <span>No buildings found</span>
           </div>
-        )}
-      </section> */}
+        )} */}
+      </section>
     </div>
   );
-}
+};

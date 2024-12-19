@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCircleDot,
-} from "@fortawesome/free-solid-svg-icons";
-import { Transition } from "@headlessui/react";
 import { Inter } from "next/font/google";
-import EventIcon from "@mui/icons-material/Event";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -19,7 +13,6 @@ export default function Classroom({
   startTime,
   nextStart,
 }) {
-  const [moreInfoActive, setMoreInfoActive] = useState(false);
   const isClosingSoon = (nextStart) => {
     const parsedDate = new Date(nextStart)
     const currentTime = new Date();
@@ -27,153 +20,124 @@ export default function Classroom({
     const differenceInMinutes = differenceInMs / (1000 * 60);
     return differenceInMinutes < 30;
   }
+
+  const getStatusColor = () => {
+    if (status) return "bg-red-900";
+    if (isClosingSoon(nextStart)) return "bg-warning";
+    return "bg-green-900/50";
+  };
+
   const googleMapsUrl = `https://www.google.com/maps/search/${encodeURIComponent(
     room
   )}`;
+
   return (
-    <div className="w-full rounded-md bg-neutral-200/60 text-black dark:bg-[#353941] dark:text-slate-200">
-      <div className="flex flex-row items-center justify-between p-2">
-        <div className="rounded-xl p-2 transition ">
-          <div className="flex items-center font-semibold">
+    <div className="collapse hover:bg-base-content/5 rounded-none collapse-arrow text-base-content">
+      <input type="checkbox" className="peer" />
+      <div className="collapse-title h-14">
+        <div className="flex h-full justify-between">
+          <div className="flex h-full items-center">
             {room}
           </div>
-        </div>
-        <div className="flex flex-row items-center justify-center text-xs bg-base-100/30 p-3 rounded-xl">
-          <div className="font-semibold">
-            {status ? " In Use" : isClosingSoon(nextStart) ? (
-              "Closing Soon"
-            ) : (
-              "Open"
-            )}
+          <div className="flex h-full items-center">
+            <div className={`flex  items-center gap-2 rounded-md bg-base-100/30 px-2 py-1 text-xs ${getStatusColor()}`}>
+              <span className="text-white/70 whitespace-nowrap">
+                {status ? "in use" : isClosingSoon(nextStart) ? "closing soon" : "available"}
+              </span>
+            </div>
           </div>
-          <div>
-            <FontAwesomeIcon
-              className={`pl-2 text-xs ${status ? "text-red-600" : isClosingSoon(nextStart) ? "text-yellow-600" : "text-green-600"}`}
-              icon={faCircleDot}
-            />
-          </div>
-          {/* <div
-            onClick={() => setMoreInfoActive(!moreInfoActive)}
-            className="btn btn-sm btn-circle btn-outline ml-2 w-fit cursor-pointer p-2 transition"
-          >
-            <FontAwesomeIcon
-              icon={faChevronDown}
-              className={`transition ` + (moreInfoActive ? "rotate-180" : "")}
-            />
-          </div> */}
         </div>
       </div>
-      {
-        status ? (
-          <div
-            className={`flex flex-col items-center justify-center py-4 text-xs font-semibold ${inter.className}`}
-          >
-            {(() => {
-              const currentTime = new Date().getTime();
-              const startTimeMillis = startTime.getTime();
-              const endTimeMillis = endTime.getTime();
-              const totalDurationMillis = endTimeMillis - startTimeMillis;
-              const elapsedMillis = currentTime - startTimeMillis;
 
-              const diffMillis = endTimeMillis - currentTime;
-              if (diffMillis < 0) {
-                return "Class has ended. Please refresh";
-              }
-
-              const diffMinutes = Math.ceil(diffMillis / 1000 / 60);
-              const hours = Math.floor(diffMinutes / 60);
-              const minutes = diffMinutes % 60;
-
-              if (hours > 0) {
-                return (
-                  <div className="flex flex-col items-center justify-center">
-                    <div className="flex w-full flex-row justify-between text-[10px] opacity-85">
-                      <span>
-                        {startTime
-                          .toLocaleString()
-                          .split(", ")[1]
-                          .replace(":00", "")}
-                      </span>
-                      <span>
-                        {endTime
-                          .toLocaleString()
-                          .split(", ")[1]
-                          .replace(":00", "")}
-                      </span>
-                    </div>
-                    <progress
-                      className="progress mb-4 w-56"
-                      value={elapsedMillis}
-                      max={totalDurationMillis}
-                    ></progress>
-                    <span>
-                      Ends in {hours} hours and {minutes} minutes
+      <div className="collapse-content no-animation">
+        <div className="pt-4 px-2">
+          {status ? (
+            <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 ${inter.className}`}>
+              {/* Time Display Section */}
+              <div className="flex flex-col space-y-4">
+                <div className="flex items-center justify-between">
+                  <div className="flex flex-col">
+                    <span className="text-xs text-base-content/50 uppercase">Start</span>
+                    <span className="text-lg">
+                      {startTime.toLocaleString().split(", ")[1].replace(":00", "")}
                     </span>
                   </div>
-                );
-              }
-              return (
-                <div className="flex flex-col items-center justify-center">
-                  <div className="flex w-full flex-row justify-between text-[10px] opacity-85">
-                    <span>
-                      {startTime
-                        .toLocaleString()
-                        .split(", ")[1]
-                        .replace(":00", "")}
-                    </span>
-                    <span>
+                  <div className="h-8 w-[1px] bg-base-content/10"></div>
+                  <div className="flex flex-col items-end">
+                    <span className="text-xs text-base-content/50 uppercase">End</span>
+                    <span className="text-lg">
                       {endTime.toLocaleString().split(", ")[1].replace(":00", "")}
                     </span>
                   </div>
-                  <progress
-                    className="progress mb-4 w-56"
-                    value={elapsedMillis}
-                    max={totalDurationMillis}
-                  ></progress>
-                  <span className="">Ends in {minutes} minutes</span>
                 </div>
-              );
-            })()}
-          </div>
-        ) : (
-          <div className="flex flex-col items-center p-4">
-            <span className="flex text-[10px] uppercase opacity-50">
-              Next class starts on:
-            </span>
-            <span className="flex flex-row items-center justify-center space-x-2 text-sm opacity-70">
-              <EventIcon fontSize="small" />
-              <div>
-                {nextStart.toLocaleString("en-US", {
-                  dateStyle: "full",
-                  timeStyle: "short",
-                })}
+
+                <div className="flex flex-col space-y-2">
+                  {(() => {
+                    const currentTime = new Date().getTime();
+                    const startTimeMillis = startTime.getTime();
+                    const endTimeMillis = endTime.getTime();
+                    const totalDurationMillis = endTimeMillis - startTimeMillis;
+                    const elapsedMillis = currentTime - startTimeMillis;
+                    const diffMillis = endTimeMillis - currentTime;
+
+                    if (diffMillis < 0) {
+                      return (
+                        <div className="text-error text-center font-medium">
+                          Class has ended. Please refresh
+                        </div>
+                      );
+                    }
+
+                    const diffMinutes = Math.ceil(diffMillis / 1000 / 60);
+                    const hours = Math.floor(diffMinutes / 60);
+                    const minutes = diffMinutes % 60;
+
+                    return (
+                      <>
+                        <div className="w-full bg-base-200 rounded-full h-3">
+                          <div
+                            className="bg-base-content h-3 rounded-full transition-all duration-1000"
+                            style={{ width: `${(elapsedMillis / totalDurationMillis) * 100}%` }}
+                          ></div>
+                        </div>
+                        <div className="text-center">
+                          {hours > 0 ? (
+                            <span>Ends in {hours}h {minutes}m</span>
+                          ) : (
+                            <span>Ends in {minutes}m</span>
+                          )}
+                        </div>
+                      </>
+                    );
+                  })()}
+                </div>
               </div>
-            </span>
-          </div>
-        )
-      }
-      {/* <div className="flex cursor-pointer flex-col gap-2 text-xs transition">
-        <Transition
-          show={moreInfoActive}
-          enter="transition ease-out duration-300"
-          enterFrom="transform opacity-0 scale-95"
-          enterTo=" transform opacity-100 scale-100"
-          leave="transition ease-in duration-300"
-          leaveFrom="transform opacity-100 scale-100"
-          leaveTo="transform opacity-0 scale-95"
-        >
-          <div className="m-3 flex flex-col items-center justify-center text-center">
-            <span className="font-semibold">
-              More information about this classroom be available here soon!
-            </span>
-            <span>
-              Ex: Fixed Seating, Podium PC, Tables and Chairs, Tiered Seating,
-              Video Conferencing
-            </span>
-            <span>Max Copacity: 34</span>
-          </div>
-        </Transition>
-      </div> */}
-    </div >
+
+              {/* Additional Info Section */}
+              <div className="hidden md:flex items-center justify-center border-l border-base-content/10">
+                <div className="flex flex-col items-center space-y-2 text-base-content/70">
+                  <div className="text-3xl">📍</div>
+                  <div className="text-sm text-center">Class is currently in session</div>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="flex flex-col items-center space-y-4 py-4">
+              <div className="flex flex-col items-center space-y-2 text-center">
+                <span className="text-xs uppercase text-base-content/50">
+                  Next class starts on
+                </span>
+                <span className="text-lg">
+                  {nextStart.toLocaleString("en-US", {
+                    dateStyle: "full",
+                    timeStyle: "short",
+                  })}
+                </span>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
   );
 }

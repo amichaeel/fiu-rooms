@@ -5,6 +5,7 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: ['class'], // Add this for theme switching
   theme: {
     extend: {
       backgroundImage: {
@@ -21,9 +22,17 @@ module.exports = {
   daisyui: {
     themes: [
       {
+        light: {
+          ...require("daisyui/src/theming/themes")["light"],
+          primary: "white",
+          secondary: "teal",
+          "base-100": "#ffffff",
+          "base-200": "#f2f2f2",
+          "base-300": "#e5e6e6",
+        },
         dark: {
-          ...require("daisyui/src/theming/themes")["dark"],
-          primary: "black",
+          ...require("daisyui/src/theming/themes")["forest"],
+          primary: "#000000",
           secondary: "teal",
         },
       },

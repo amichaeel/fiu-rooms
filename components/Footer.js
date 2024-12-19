@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
-    <footer className="footer bg-neutral text-neutral-content mt-10 items-center p-2 dark:bg-[#353941]">
-      <aside className="flex w-full flex-col items-center justify-center p-2 text-xs dark:font-[#353941]">
+    <footer className="footer footer-center mt-auto bg-primary p-4 text-base-content">
+      <aside className="text-xs">
         <p>FIU Rooms is not affiliated with Florida International University</p>
       </aside>
     </footer>

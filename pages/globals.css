@@ -17,11 +17,16 @@ body {
     }
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
     body {
-        background: #26282b;
+        background: #000000;
     }
 }
+@media (prefers-color-scheme: light) {
+    body {
+        background: #ffffff;
+    }
+} */
 
 @layer base {
     @font-face {

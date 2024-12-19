@@ -66,7 +66,7 @@ const CampusMap = () => {
 
   return (
     <div className='flex flex-col items-center justify-center w-full cursor'>
-      <div className='mt-20 flex flex-col items-center'>
+      <div className='md:mt-20 mt-28 flex flex-col items-center'>
         <span className='font-monumentExtended text-xl'>Campus Map</span>
         <span className='text-center text-sm'>To use this map, simply click on the building you would like to see the availability of. Buildings with no shading are not supported.</span>
       </div>

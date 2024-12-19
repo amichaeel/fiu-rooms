@@ -20,14 +20,18 @@
     "@mui/icons-material": "^5.15.10",
     "@mui/material": "^5.15.10",
     "@vercel/analytics": "^1.1.2",
+    "fast-xml-parser": "^4.5.1",
     "image-map-resizer": "^1.0.10",
+    "lucide-react": "^0.468.0",
     "mapbox-gl": "^3.7.0",
     "mongoose": "^8.1.0",
     "next": "^14.2.13",
     "react": "^18",
     "react-dom": "^18",
     "react-img-mapper": "^1.5.1",
-    "react-spinners": "^0.13.8"
+    "react-spinners": "^0.13.8",
+    "react-xml-parser": "^1.1.8",
+    "xml-js": "^1.6.11"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",

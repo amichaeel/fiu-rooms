@@ -55,7 +55,7 @@ export default function Page() {
 
   return (
     <div className="">
-      <div className="mt-20 w=full flex flex-col items-center justify-center space-y-2">
+      <div className="md:mt-20 mt-28 w=full flex flex-col items-center justify-center space-y-2">
         {notFound ? (
           <div>Building not found.</div>
         ) : (
@@ -75,7 +75,7 @@ export default function Page() {
               Note that if a classroom does not appear here, no class is scheduled
               for that room.
             </div>
-            <div className="flex w-full max-w-6xl flex-col items-center gap-2 p-2">
+            <div className="flex divide-base-content/50 divide-y-[0.5px] w-full max-w-6xl flex-col items-center p-2">
               {isLoading ? (
                 <BeatLoader className="dark:invert" />
               ) : Object.keys(allRoomsStatus).length > 0 ? (

@@ -3,6 +3,7 @@ import { transformClassesToSchedule, isRoomInUse } from "@/utils/scheduleUtils";
 import { MoonLoader } from "react-spinners";
 import { useRouter } from "next/router";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import { Users } from "lucide-react";
 
 export default function Building({ building }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -34,7 +35,6 @@ export default function Building({ building }) {
           {},
         );
 
-        // Calculating availability based on the new allRoomsStatus
         const tempAvailability = [0, 0];
         for (const inUse of Object.values(newAllRoomsStatus)) {
           if (!inUse[0]) {
@@ -56,17 +56,23 @@ export default function Building({ building }) {
   return (
     <div
       onClick={() => handleBuildingClick(building)}
-      className="group/building flex h-[100px] cursor-pointer flex-row items-center justify-between space-x-6 rounded-md bg-neutral-200/60 p-4 text-black transition hover:bg-neutral-300 dark:bg-[#353941] dark:hover:bg-[#4d525d]"
+      className="group/building flex h-[100px] border border-base-content/10 cursor-pointer flex-row items-center justify-between space-x-6 rounded-md bg-base-content/5 p-4 transition hover:bg-white/10"
     >
-      <div className="text-md text-slate-900 dark:text-slate-300">
-        {building}
+      <div className="text-md flex flex-col h-full justify-between text-base-content">
+        <span>{building}</span>
+        <span className="text-xs flex items-center gap-2"><Users size={20} />{availability[0]} room(s) available</span>
       </div>
       {isLoading ? (
         <div className="justify-self-end text-xs">
-          <MoonLoader className="mr-10 dark:invert" speedMultiplier={0.7} color="rgb(0,0,0)" size={45} />
+          <MoonLoader
+            className="mr-10"
+            speedMultiplier={0.7}
+            color="currentColor"
+            size={45}
+          />
         </div>
       ) : (
-        <div className="flex items-center justify-center text-xs font-semibold text-blue-900 dark:text-slate-300 ">
+        <div className="flex items-center justify-center text-xs font-semibold text-base-content">
           <div
             className="radial-progress"
             style={{
