@@ -40,3 +40,10 @@ body {
         src: url(/static/fonts/monument_extended/PPMonumentExtended-Black.otf) format(woff);
     }
 }
+
+.collapse:focus:not(.collapse-close) .collapse-content,
+.collapse:not(.collapse-close) input[type="checkbox"]:checked ~ .collapse-content,
+.collapse:not(.collapse-close) input[type="radio"]:checked ~ .collapse-content {
+  @apply visible;
+  @apply visible min-h-fit;
+}

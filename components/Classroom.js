@@ -49,7 +49,7 @@ export default function Classroom({
         </div>
       </div>
 
-      <div className="collapse-content h-0 transition-none">
+      <div className="collapse-content">
         <div className="pt-4 px-2">
           {status ? (
             <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 ${inter.className}`}>
