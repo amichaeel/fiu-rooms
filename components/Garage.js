@@ -94,7 +94,7 @@ export default function Garage({ garage }) {
 
             <div className="grid grid-cols-2 gap-4">
               {/* Student Spaces */}
-              <div className="rounded-lg p-3">
+              <div className="rounded-md p-3">
                 <div className="text-xs uppercase text-base-content/70 mb-2">Student</div>
                 <div className="flex items-center justify-between">
                   <div className="flex flex-col">
