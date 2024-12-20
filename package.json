@@ -22,6 +22,7 @@
     "@vercel/analytics": "^1.1.2",
     "fast-xml-parser": "^4.5.1",
     "image-map-resizer": "^1.0.10",
+    "lodash": "^4.17.21",
     "lucide-react": "^0.468.0",
     "mapbox-gl": "^3.7.0",
     "mongoose": "^8.1.0",

@@ -25,6 +25,7 @@ module.exports = {
         light: {
           ...require("daisyui/src/theming/themes")["light"],
           primary: "white",
+          inverse: "black",
           secondary: "teal",
           "base-100": "#ffffff",
           "base-200": "#f2f2f2",
@@ -33,6 +34,7 @@ module.exports = {
         dark: {
           ...require("daisyui/src/theming/themes")["forest"],
           primary: "#000000",
+          inverse: "white",
           secondary: "teal",
         },
       },

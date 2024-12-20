@@ -23,8 +23,8 @@ export default function Classroom({
 
   const getStatusColor = () => {
     if (status) return "bg-red-900";
-    if (isClosingSoon(nextStart)) return "bg-warning";
-    return "bg-green-900/50";
+    if (isClosingSoon(nextStart)) return "bg-yellow-900";
+    return "bg-green-900";
   };
 
   const googleMapsUrl = `https://www.google.com/maps/search/${encodeURIComponent(
@@ -36,7 +36,7 @@ export default function Classroom({
       <input type="checkbox" className="peer" />
       <div className="collapse-title h-14">
         <div className="flex h-full justify-between">
-          <div className="flex h-full items-center">
+          <div className="flex h-full text-xs items-center">
             {room}
           </div>
           <div className="flex h-full items-center">
@@ -49,7 +49,7 @@ export default function Classroom({
         </div>
       </div>
 
-      <div className="collapse-content no-animation">
+      <div className="collapse-content h-0 transition-none">
         <div className="pt-4 px-2">
           {status ? (
             <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 ${inter.className}`}>
@@ -58,14 +58,14 @@ export default function Classroom({
                 <div className="flex items-center justify-between">
                   <div className="flex flex-col">
                     <span className="text-xs text-base-content/50 uppercase">Start</span>
-                    <span className="text-lg">
+                    <span className="text-sm">
                       {startTime.toLocaleString().split(", ")[1].replace(":00", "")}
                     </span>
                   </div>
                   <div className="h-8 w-[1px] bg-base-content/10"></div>
                   <div className="flex flex-col items-end">
                     <span className="text-xs text-base-content/50 uppercase">End</span>
-                    <span className="text-lg">
+                    <span className="text-sm">
                       {endTime.toLocaleString().split(", ")[1].replace(":00", "")}
                     </span>
                   </div>
@@ -100,7 +100,7 @@ export default function Classroom({
                             style={{ width: `${(elapsedMillis / totalDurationMillis) * 100}%` }}
                           ></div>
                         </div>
-                        <div className="text-center">
+                        <div className="text-center text-xs">
                           {hours > 0 ? (
                             <span>Ends in {hours}h {minutes}m</span>
                           ) : (
@@ -116,8 +116,8 @@ export default function Classroom({
               {/* Additional Info Section */}
               <div className="hidden md:flex items-center justify-center border-l border-base-content/10">
                 <div className="flex flex-col items-center space-y-2 text-base-content/70">
-                  <div className="text-3xl">📍</div>
-                  <div className="text-sm text-center">Class is currently in session</div>
+                  <div className="text-xl">📍</div>
+                  <div className="text-xs text-center">Class is currently in session</div>
                 </div>
               </div>
             </div>
@@ -127,7 +127,7 @@ export default function Classroom({
                 <span className="text-xs uppercase text-base-content/50">
                   Next class starts on
                 </span>
-                <span className="text-lg">
+                <span className="text-sm">
                   {nextStart.toLocaleString("en-US", {
                     dateStyle: "full",
                     timeStyle: "short",

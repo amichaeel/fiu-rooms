@@ -60,7 +60,7 @@ export default function Building({ building }) {
     >
       <div className="text-md flex flex-col h-full justify-between text-base-content">
         <span>{building}</span>
-        <span className="text-xs flex items-center gap-2"><Users size={20} />{availability[0]} room(s) available</span>
+        <span className="text-xs flex items-center gap-2"><Users size={20} />{availability[0]}/{availability[1]} room(s) available</span>
       </div>
       {isLoading ? (
         <div className="justify-self-end text-xs">
