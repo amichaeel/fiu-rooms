@@ -98,9 +98,10 @@ export default function Garage({ garage }) {
                 <div className="text-xs uppercase text-base-content/70 mb-2">Student</div>
                 <div className="flex items-center justify-between">
                   <div className="flex flex-col">
-                    <span className={`text-2xl font-bold ${getStatusColor(availability.student.percentage)}`}>
-                      {availability.student.available}
-                    </span>
+                    <div className={`flex items-baseline ${getStatusColor(availability.student.percentage)}`}>
+                      <span className="text-2xl font-bold">{availability.student.available}</span>
+                      <p className="text-base-content/70 text-xs">/{availability.student.total}</p>
+                    </div>
                     <span className="text-xs text-base-content/70">spaces left</span>
                   </div>
                   <div
@@ -122,9 +123,10 @@ export default function Garage({ garage }) {
                 <div className="text-xs uppercase text-base-content/70 mb-2">Other</div>
                 <div className="flex items-center justify-between">
                   <div className="flex flex-col">
-                    <span className={`text-2xl font-bold ${getStatusColor(availability.other.percentage)}`}>
-                      {availability.other.available}
-                    </span>
+                    <div className={`flex items-baseline ${getStatusColor(availability.other.percentage)}`}>
+                      <span className="text-2xl font-bold">{availability.other.available}</span>
+                      <p className="text-base-content/70 text-xs">/{availability.other.total}</p>
+                    </div>
                     <span className="text-xs text-base-content/70">spaces left</span>
                   </div>
                   <div

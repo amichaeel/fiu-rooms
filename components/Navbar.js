@@ -1,12 +1,7 @@
 import React from "react";
 import { Inter } from "next/font/google";
 import Link from "next/link";
-import { List } from "lucide-react";
-import EmailIcon from "@mui/icons-material/Email";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import { CoffeeRounded } from "@mui/icons-material";
-import MapIcon from "@mui/icons-material/Map";
-import { Sun, Moon, CarIcon, Menu } from 'lucide-react';
+import { Sun, Moon, CarIcon, Menu, BookOpen, Map, Mail, Coffee, GithubIcon } from 'lucide-react';
 
 const inter = Inter({
   subsets: ["latin"],
@@ -65,32 +60,32 @@ export default function Navbar() {
             </li>
             <li>
               <Link href="/courses">
-                <List />
+                <BookOpen />
                 Courses
               </Link>
             </li>
             <li>
               <Link href="/map">
-                <MapIcon />
+                <Map />
                 Campus Map
               </Link>
             </li>
             <li className="menu-title font-bold mt-4">Links</li>
             <li>
               <Link href="https://buymeacoffee.com/anthonyham">
-                <CoffeeRounded />
+                <Coffee />
                 Buy Me a Coffee
               </Link>
             </li>
             <li>
               <Link href="https://www.github.com/amichaeel/fiu-rooms">
-                <GitHubIcon />
+                <GithubIcon />
                 GitHub Repository
               </Link>
             </li>
             <li>
               <Link href="mailto:mail@anthonymham.com">
-                <EmailIcon />
+                <Mail />
                 Email Me
               </Link>
             </li>
@@ -100,8 +95,8 @@ export default function Navbar() {
 
       {/* Desktop Layout */}
       <div className="navbar max-w-screen-xl fixed z-50 text-base-content backdrop-blur-lg hidden md:flex">
-        <div className="flex w-full items-center justify-between px-4">
-          <Link className="btn btn-ghost" href="/">
+        <div className="flex w-full items-center justify-between">
+          <Link className="font-bold" href="/">
             <span className="font-monumentExtended text-lg">FIU ROOMS</span>
           </Link>
 
@@ -115,32 +110,32 @@ export default function Navbar() {
 
             <div className="tooltip tooltip-bottom [--tooltip-color:#FFFFFF] [--tooltip-text-color:#000000] dark:[--tooltip-text-color:#FFFFFF] dark:[--tooltip-color:#000000]" data-tip="Courses">
               <Link href="/courses" className="btn btn-ghost btn-sm btn-circle">
-                <List className="h-4 w-4" />
+                <BookOpen className="h-4 w-4" />
               </Link>
             </div>
 
             <div className="tooltip tooltip-bottom [--tooltip-color:#FFFFFF] [--tooltip-text-color:#000000] dark:[--tooltip-text-color:#FFFFFF] dark:[--tooltip-color:#000000]" data-tip="Map">
               <Link href="/map" className="btn btn-ghost btn-sm btn-circle">
-                <MapIcon className="h-4 w-4 " />
+                <Map className="h-4 w-4 " />
               </Link>
             </div>
 
             <div className="tooltip tooltip-bottom [--tooltip-color:#FFFFFF] [--tooltip-text-color:#000000] dark:[--tooltip-text-color:#FFFFFF] dark:[--tooltip-color:#000000]" data-tip="Buy me a Coffee :)">
               <Link href="https://buymeacoffee.com/anthonyham" className="btn btn-ghost btn-sm btn-circle">
-                <CoffeeRounded className="h-4 w-4 " />
+                <Coffee className="h-4 w-4 " />
               </Link>
             </div>
 
 
             <div className="tooltip tooltip-bottom [--tooltip-color:#FFFFFF] [--tooltip-text-color:#000000] dark:[--tooltip-text-color:#FFFFFF] dark:[--tooltip-color:#000000]" data-tip="GitHub">
               <Link href="https://www.github.com/amichaeel/fiu-rooms" className="btn btn-ghost btn-sm btn-circle">
-                <GitHubIcon className="h-4 w-4 " />
+                <GithubIcon className="h-4 w-4 " />
               </Link>
             </div>
 
             <div className="tooltip tooltip-bottom [--tooltip-color:#FFFFFF] [--tooltip-text-color:#000000] dark:[--tooltip-text-color:#FFFFFF] dark:[--tooltip-color:#000000]" data-tip="Email Me">
               <Link href="mailto:mail@anthonymham.com" className="btn btn-ghost btn-sm btn-circle">
-                <EmailIcon className="h-4 w-4 " />
+                <Mail className="h-4 w-4 " />
               </Link>
             </div>
 

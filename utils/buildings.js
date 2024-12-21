@@ -17,7 +17,7 @@ export const buildings = [
   "Labor Center",
   "Mgmt and New Growth Opp",
   "Mgmt & Advanced Resrch Ctr",
-  "Student Athletic Academic Ctr",
+  // "Student Athletic Academic Ctr",
   "Student Acad Success Cntr",
   "Ocean Bank Convoc Center",
   "Owa Ehan",
