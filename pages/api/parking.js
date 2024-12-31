@@ -1,4 +1,10 @@
+import { validateRequest } from "@/utils/validateRequest";
+
 export default async function handler(req, res) {
+  if (!validateRequest(req)) {
+    return res.status(403).json({ message: "Unauthorized request" });
+  }
+
   if (req.method !== 'GET') {
     return res.status(405).json({ message: 'Method not allowed' });
   }

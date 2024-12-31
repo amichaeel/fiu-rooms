@@ -1,8 +1,12 @@
 import mongoose from "mongoose";
 import dbConnect from "@/lib/dbconnect";
+import { validateRequest } from "@/utils/validateRequest";
 
 export default async function handler(req, res) {
   try {
+    if (!validateRequest(req)) {
+      return res.status(403).json({ message: "Unauthorized request" });
+    }
     await dbConnect();
     const { building } = await req.query;
     if (!building) {
