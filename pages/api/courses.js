@@ -1,10 +1,16 @@
 import mongoose from "mongoose";
 import dbConnect from "@/lib/dbconnect";
+import { validateRequest } from "@/utils/validateRequest";
+
 
 export default async function handler(req, res) {
   try {
     await dbConnect();
     const { query, page = 1, limit = 10 } = req.query;
+
+    if (!validateRequest(req)) {
+      return res.status(403).json({ message: "Unauthorized request" });
+    }
 
     if (!query) {
       return res.status(200).json({ courses: [], total: 0, totalPages: 0 });
