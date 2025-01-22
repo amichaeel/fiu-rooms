@@ -51,15 +51,15 @@ export default function Garage({ garage }) {
     const studentAvailable = studentTotal - studentTaken;
 
     const otherTotal = parkingData.otherSpaces < 0 ? parkingData.otherMax + Math.abs(parkingData.otherSpaces) : parkingData.otherMax;
-    const otherTaken = Math.max(0, parkingData.otherSpaces);
+    const otherTaken = parkingData.otherSpaces;
     const otherAvailable = otherTotal - otherTaken;
 
     const studentPercentage = Math.round((studentTaken / studentTotal) * 100);
     const otherPercentage = Math.round((otherTaken / otherTotal) * 100);
 
     return {
-      student: { total: studentTotal, available: studentAvailable, percentage: studentPercentage },
-      other: { total: otherTotal, available: otherAvailable, percentage: otherPercentage }
+      student: { total: studentTotal, available: Math.max(0, studentAvailable), percentage: Math.min(100, studentPercentage) },
+      other: { total: otherTotal, available: Math.max(0, otherAvailable), percentage: Math.min(100, otherPercentage) }
     };
   };
 

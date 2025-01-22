@@ -49,9 +49,9 @@ export default async function handler(req, res) {
 
       return {
         garageName: getName[1],
-        studentSpaces: parseInt(getStudentSpaces[1]),
+        studentSpaces: Math.max(0, parseInt(getStudentSpaces[1])),
         studentMax: parseInt(getStudentMax[1]),
-        otherSpaces: parseInt(getOtherSpaces[1]),
+        otherSpaces: Math.max(0, parseInt(getOtherSpaces[1])),
         otherMax: parseInt(getOtherMax[1])
       };
     }).filter(Boolean);
