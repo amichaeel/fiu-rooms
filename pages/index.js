@@ -34,7 +34,7 @@ export default function Home() {
       <section className="w-full border bg-base-content/5 border-base-content/10 rounded-md flex items-center gap-4 p-4 max-w-screen-xl">
         <CircleAlert className="h-16 w-16 md:h-6 md:w-6" />
         <p className="text-xs">
-          The Spring 2025 schedule is now available on FIU Rooms. Room availability will innacurately show rooms as occupied until the semester begins on January 6, 2025.
+          Did your class change rooms? Email me at <a href="mailto:mail@anthonymham.com" className="underline">mail@anthonymham.com</a> to submit a room change.
         </p>
       </section>
 
