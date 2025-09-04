@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
 import Building from "@/components/Building";
-import ErrorIcon from "@mui/icons-material/Error";
-import { Info, Search } from "lucide-react";
 import { buildings } from "@/utils/buildings";
-import { CircleAlert } from "lucide-react";
+import ErrorIcon from "@mui/icons-material/Error";
+import { CircleAlert, Info, Search } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const [search, setSearch] = useState("");
@@ -30,11 +29,15 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center px-2 py-2 justify-center">
-
       <section className="w-full border bg-base-content/5 border-base-content/10 rounded-md flex items-center gap-4 p-4 max-w-screen-xl">
         <CircleAlert className="h-16 w-16 md:h-6 md:w-6" />
         <p className="text-xs">
-          Did your class change rooms? Email me at <a href="mailto:mail@anthonymham.com" className="underline">mail@anthonymham.com</a> to submit a room change.
+          FIU Rooms has been updated to Fall 2025! Did your class change rooms?
+          Email me at{" "}
+          <a href="mailto:mail@anthonymham.com" className="underline">
+            mail@anthonymham.com
+          </a>{" "}
+          to submit a room change.
         </p>
       </section>
 
@@ -51,21 +54,29 @@ export default function Home() {
         </label>
 
         <div className="dropdown dropdown-left px-4">
-          <div tabIndex={0} role="button" className="btn btn-sm p-0 btn-ghost m-1"><Info /></div>
           <div
             tabIndex={0}
-            className="dropdown-content backdrop-blur-lg rounded-md border border-base-content/50 shadow-xl card card-compact text-primary-content z-[1] w-64 p-2">
+            role="button"
+            className="btn btn-sm p-0 btn-ghost m-1"
+          >
+            <Info />
+          </div>
+          <div
+            tabIndex={0}
+            className="dropdown-content backdrop-blur-lg rounded-md border border-base-content/50 shadow-xl card card-compact text-primary-content z-[1] w-64 p-2"
+          >
             <div className="card-body text-base-content">
               <h3 className="card-title">Please note:</h3>
               <ul className="list list-disc pl-5">
-                <li>Displayed availability only reflects official class schedules.</li>
+                <li>
+                  Displayed availability only reflects official class schedules.
+                </li>
                 <li>Rooms may be occupied by club meetings or study groups.</li>
                 <li>Some rooms may be locked by FIU staff.</li>
               </ul>
             </div>
           </div>
         </div>
-
       </section>
       <section
         id="buildings"
@@ -84,4 +95,4 @@ export default function Home() {
       </section>
     </div>
   );
-};
+}
